@@ -31,6 +31,15 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Roles", "Index", "Role")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Profile", "Home")</li>
+                            <li><a href="#">Editar Perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Apagar Conta</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 @*NÂO APAGAR*@
 
@@ -45,15 +54,7 @@
                             <button type="submit" class="btn btn-default">Search</button>
                         </form>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Profile", "Home")</li>
-                            <li><a href="#">Editar Perfil</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Apagar Conta</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
 
             </div>
