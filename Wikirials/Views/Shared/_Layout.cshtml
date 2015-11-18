@@ -83,20 +83,9 @@
         <div class="footer-left">
             <img src="~/Images/Wikirials Brand.fw.png">
             <p class="footer-links">
-
-                <a href="">Home</a>
-                ·
-                <a href="#">Category List</a>
-                ·
-                <a href="#">Group List</a>
-                ·
-                <a href="#">Chat List</a>
-                ·
-                <a href="#">Create Tutorial</a>
-                <ul>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+                @Html.ActionLink("About", "About", "Home")
+                -
+                @Html.ActionLink("Contact", "Contact", "Home")
             </p>
             <p class="footer-company-name">WIKIRIALS &copy; 2015</p>
             <div class="footer-icons">
