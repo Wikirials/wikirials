@@ -10,7 +10,6 @@
 <!--
 <h2>@ViewBag.Title</h2>
 -->
-
 @Html.AntiForgeryToken()
 <div class="jumbotron">
     <h2>Profile</h2>
@@ -19,30 +18,35 @@
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <br />
+
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
-        <br />
+
         <dt>
             @Html.DisplayNameFor(model => model.DateofBirth)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.DateofBirth)
         </dd>
-        <br />
+
         <dt>
             @Html.DisplayNameFor(model => model.Gender)
         </dt>
+
         <dd>
             @Html.DisplayFor(model => model.Gender)
         </dd>
+
         @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
         {
             <dt>
@@ -52,6 +56,27 @@
                 <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
             </dd>
         }
+
+
+        @using (Html.BeginForm("userdet", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <dd>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <input type="file" id="Avatar" name="upload" />
+                    </div>
+                </div>
+            </dd>
+
+            <dd>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </dd>
+        }
+
     </dl>
     @Html.ActionLink("Change Password", "Manage", "Account", routeValues: null, htmlAttributes: new { id = "Manage" })
     @*<div>
