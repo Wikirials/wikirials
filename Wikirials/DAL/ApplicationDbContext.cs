@@ -23,6 +23,7 @@ namespace Wikirials.DAL
         public DbSet<Suggestion> Suggestions { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tutorial> Tutorials { get; set; }
+        public DbSet<File> Files { get; set; }
 
         public static ApplicationDbContext Create()
         {

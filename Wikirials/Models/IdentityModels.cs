@@ -28,6 +28,7 @@ namespace Wikirials.Models
         public virtual ICollection<Suggestion> Suggestions { get; set; }
         public virtual ICollection<Chat> Chats { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<File> Files { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
