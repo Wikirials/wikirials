@@ -61,8 +61,8 @@ namespace Wikirials
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+                //ClientId = "",
+                //ClientSecret = ""
             //});
         }
     }
