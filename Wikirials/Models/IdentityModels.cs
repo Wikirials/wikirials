@@ -17,8 +17,11 @@ namespace Wikirials.Models
     {
         public const string NameClaimType = "Name";
 
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Gender { get; set; }
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateofBirth { get; set; }
