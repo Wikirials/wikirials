@@ -19,6 +19,8 @@ namespace Wikirials.Models
 
         public string Name { get; set; }
         public string Gender { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateofBirth { get; set; }
 
 
