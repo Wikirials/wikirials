@@ -171,6 +171,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\TutorialController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,6 +272,11 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\ManageUserRoles.cshtml" />
+    <Content Include="Views\Tutorial\Create.cshtml" />
+    <Content Include="Views\Tutorial\Delete.cshtml" />
+    <Content Include="Views\Tutorial\Details.cshtml" />
+    <Content Include="Views\Tutorial\Edit.cshtml" />
+    <Content Include="Views\Tutorial\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

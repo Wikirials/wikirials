@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Wikirials.Models.Tutorial>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="container">
+    <h2>Tutoriais:</h2>
+    <div class="well">
+        
+        <br>
+
+
+        @using (Html.BeginForm())
+        {
+            <p>
+                Title: @Html.TextBox("SearchString")
+                <input type="submit" value="Filter" />
+            </p>
+        }
+
+
+
+
+
+        @foreach (var item in Model)
+        {
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <img src="http://placehold.it/260x180" alt="">
+
+                </div>
+                <div class="col-md-9">
+                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Body)
+                    </p>
+                    <p><div class="btn btn-info btn-sm">@Html.ActionLink("Read More", "Details", new { id = item.ID })</div></p>
+                    <br />
+                    <ul class="list-inline">
+                        <li><i class="glyphicon glyphicon-user"></i> by <a href="">Zé</a> | </li>
+                        <li><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(modelItem => item.Date)| </li>
+                        <li> @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        }
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Classification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContentType)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContentType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
