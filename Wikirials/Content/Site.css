@@ -320,3 +320,11 @@ textarea {
     padding-top: 5px;
     padding-right: 19px;
 }
+
+.col-xs-12.col-sm-6.col-md-6 {
+    width: 98.5%;
+}
+
+.col-sm-6.col-md-8.profile {
+    padding-right: 100px;
+}
