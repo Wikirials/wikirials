@@ -13,7 +13,7 @@
 @Html.AntiForgeryToken()
 
 <div class="container">
-    <h2>Perfil:</h2>
+    <h2>Profile</h2>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
@@ -27,7 +27,7 @@
 
                         <p><i class="glyphicon glyphicon-envelope"></i> @Html.DisplayFor(model => model.Email)</p>
 
-                        <p><i class="glyphicon glyphicon-calendar"></i> June 02, 1988</p>
+                        <p><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(model => model.DateofBirth)</p>
 
                         <p><i class="glyphicon glyphicon-heart-empty"></i> @Html.DisplayFor(model => model.Gender)</p>
                         <div class="panel-footer">
