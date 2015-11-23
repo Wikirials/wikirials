@@ -288,7 +288,7 @@ textarea {
 }
 
 .btn.btn-success.login{
-    margin-left: 55px;
+    margin-left: 50px;
 }
 
 .btn.btn-secondary.login {
@@ -304,5 +304,19 @@ textarea {
 }
 
 .colorr {
-    color: black;
+    color: black
+}
+
+.list {
+    margin-left: 195px;
+}
+
+.row.profile {
+    padding-right: -100px;
+}
+
+.aboutt {
+    background-color: #FFFFCC;
+    padding-top: 5px;
+    padding-right: 19px;
 }
