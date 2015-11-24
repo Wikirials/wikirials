@@ -278,3 +278,53 @@ textarea {
         margin-left: 50px;
     }
 }
+
+.about {
+    padding-left: 40px;
+}
+
+.wikirials {
+    padding-left: 40px;
+}
+
+.btn.btn-success.login{
+    margin-left: 50px;
+}
+
+.btn.btn-secondary.login {
+    margin-left: 25px;
+}
+
+.checkbox.login {
+    margin-left: 100px;
+}
+
+.cookie{
+    padding-left: 210px;
+}
+
+.colorr {
+    color: black
+}
+
+.list {
+    margin-left: 195px;
+}
+
+.row.profile {
+    padding-right: -100px;
+}
+
+.aboutt {
+    background-color: #FFFFCC;
+    padding-top: 5px;
+    padding-right: 19px;
+}
+
+.col-xs-12.col-sm-6.col-md-6 {
+    width: 98.5%;
+}
+
+.col-sm-6.col-md-8.profile {
+    padding-right: 100px;
+}
