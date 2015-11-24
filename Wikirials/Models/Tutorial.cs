@@ -25,5 +25,6 @@ namespace Wikirials.Models
         public virtual ICollection<Group> Groups { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<File> Files { get; set; }
     }
 }

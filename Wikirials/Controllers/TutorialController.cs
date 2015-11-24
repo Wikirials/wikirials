@@ -54,10 +54,26 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ID,Title,Body,Date,Classification,Type,ContentType")] Tutorial tutorial)
+        public ActionResult Create([Bind(Include = "ID,Title,Body,Date,Classification,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var pic = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Pic,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        pic.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    tutorial.Files = new List<File> { pic };
+                }
+
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,11 +102,34 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ID,Title,Body,Date,Classification,Type,ContentType")] Tutorial tutorial)
+        public ActionResult Edit([Bind(Include = "ID,Title,Body,Date,Classification,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
         {
+
             if (ModelState.IsValid)
             {
-                db.Entry(tutorial).State = EntityState.Modified;
+                int tutorialid = tutorial.ID;
+                var tutorialToUpdate = db.Tutorials.SingleOrDefault(u => u.ID == tutorialid);
+
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    if (tutorialToUpdate.Files.Any(f => f.FileType == FileType.Pic))
+                    {
+                        db.Files.Remove(tutorialToUpdate.Files.First(f => f.FileType == FileType.Pic));
+                    }
+                    var pic = new File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Pic,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        pic.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    tutorialToUpdate.Files = new List<File> { pic };
+                }
+
+                db.Entry(tutorialToUpdate).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

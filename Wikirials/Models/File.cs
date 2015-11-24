@@ -17,5 +17,7 @@ namespace Wikirials.Models
         public FileType FileType { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+        public virtual Tutorial Tutorial { get; set; }
     }
 }
