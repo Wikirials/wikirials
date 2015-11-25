@@ -5,73 +5,165 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="container">
 
-<div>
-    <h4>Tutorial</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <div class="well">
+        <fieldset>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Body)
-        </dd>
+            <h1>@Html.DisplayFor(model => model.Title)<span class="pull-right"><h4>@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</h4></span></h1>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            @if (Model.Files.Any(f => f.FileType == FileType.Pic))
+{
+    <img class="displayed" src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Pic).FileId" alt="pic" />
+}
+            
+            <br>
+            <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+                <p>@Html.DisplayFor(model => model.Body)</p>
+                <div>
+                    <span><a class="btn icon-btn btn-primary" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>Like</a></span>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Classification)
-        </dt>
+                    <div class="pull-right">
+                        <span><b>Author:</b> Ze</span> <span><b>Category:</b> Agricultura</span> <span><b>Likes:</b> 123</span> <span><b>View Count:</b> 123</span>
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Classification)
-        </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
+            <br>
+            <div>
+                <textarea class="col-md-12" id="new_message" name="new_message" placeholder="Type in your message" rows="5"></textarea>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ContentType)
-        </dt>
+            <br><br><br><br><br><br>
+            <div class="pull-right">
+                <a href="" class="btn btn-success" role="button">Comment</a>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ContentType)
-        </dd>
 
-        @if (Model.Files.Any(f => f.FileType == FileType.Pic))
-        {
-            <dt>
-                Pic
-            </dt>
-            <dd>
-                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Pic).FileId" alt="pic" />
-            </dd>
-        }
+            <div class="row">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
 
-    </dl>
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                        </div>
+                        <div class="panel-body">
+                            Panel content
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </fieldset>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+
+
+
+
+        <h2>Details</h2>
+
+        <div>
+            <h4>Tutorial</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Body)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Body)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Date)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Date)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Classification)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Classification)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Type)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContentType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ContentType)
+                </dd>
+
+                @if (Model.Files.Any(f => f.FileType == FileType.Pic))
+                {
+                    <dt>
+                        Pic
+                    </dt>
+                    <dd>
+                        <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Pic).FileId" alt="pic" />
+                    </dd>
+                }
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>

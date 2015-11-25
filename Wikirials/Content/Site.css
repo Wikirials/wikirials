@@ -328,3 +328,8 @@ textarea {
 .col-sm-6.col-md-8.profile {
     padding-right: 100px;
 }
+
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
