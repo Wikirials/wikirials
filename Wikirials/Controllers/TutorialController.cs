@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Wikirials.Models;
 using Wikirials.DAL;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Wikirials.Controllers
 {
@@ -18,7 +20,7 @@ namespace Wikirials.Controllers
         // GET: /Tutorial/
         public ActionResult Index(string searchString)
         {
-            var tutorial = from s in db.Tutorials
+            var tutorial = from s in db.Tutorials.Include(p => p.Files)
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -56,6 +58,9 @@ namespace Wikirials.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Title,Body,Date,Classification,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
         {
+            string userid = User.Identity.GetUserId();
+            var currentuser = db.Users.SingleOrDefault(u => u.Id == userid);
+
             if (ModelState.IsValid)
             {
 
@@ -73,6 +78,8 @@ namespace Wikirials.Controllers
                     }
                     tutorial.Files = new List<File> { pic };
                 }
+
+                tutorial.User = currentuser;
 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
