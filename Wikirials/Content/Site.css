@@ -31,214 +31,207 @@ textarea {
     padding: 0;
 }
 
-.navbar-brand img {
-    height:40px;
+    .navbar-brand img {
+        height: 40px;
+    }
+
+.footer-distributed {
+    background-color: black;
+    border-color: #E7E7E7;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    height: 45%;
+    font: bold 16px sans-serif;
+    text-align: left;
+    padding: 50px 60px 40px;
+    margin-top: 80px;
+    overflow: hidden;
+    position: relative;
+    bottom: 0;
 }
 
-.footer-distributed{
-	background-color: black; 
-	border-color: #E7E7E7;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	height: 45%;
-	font: bold 16px sans-serif;
-	text-align: left;
+    /* Footer left */
 
-	padding: 50px 60px 40px;
-	margin-top: 80px;
-	overflow: hidden;
-	position: relative;
-	bottom:0;
-}
+    .footer-distributed .footer-left {
+        float: left;
+    }
 
-/* Footer left */
+    /* The company logo */
 
-.footer-distributed .footer-left{
-	float: left;
-}
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0 0 10px;
+    }
 
-/* The company logo */
+        .footer-distributed h3 span {
+            color: #5383d3;
+        }
 
-.footer-distributed h3{
-	color:  #ffffff;
-	font: normal 36px 'Cookie', cursive;
-	margin: 0 0 10px;
-}
+    /* Footer links */
 
-.footer-distributed h3 span{
-	color:  #5383d3;
-}
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 0 0 10px;
+        padding: 0;
+    }
 
-/* Footer links */
+        .footer-distributed .footer-links a {
+            display: inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color: inherit;
+        }
 
-.footer-distributed .footer-links{
-	color:  #ffffff;
-	margin: 0 0 10px;
-	padding: 0;
-}
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
 
-.footer-distributed .footer-links a{
-	display:inline-block;
-	line-height: 1.8;
-	text-decoration: none;
-	color:  inherit;
-}
+    /* Footer social icons */
 
-.footer-distributed .footer-company-name{
-	color:  #8f9296;
-	font-size: 14px;
-	font-weight: normal;
-	margin: 0;
-}
+    .footer-distributed .footer-icons {
+        margin-top: 40px;
+    }
 
-/* Footer social icons */
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            background-color: #33383b;
+            border-radius: 2px;
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
 
-.footer-distributed .footer-icons{
-	margin-top: 40px;
-}
+    /* Footer Right */
 
-.footer-distributed .footer-icons a{
-	display: inline-block;
-	width: 35px;
-	height: 35px;
-	cursor: pointer;
-	background-color:  #33383b;
-	border-radius: 2px;
+    .footer-distributed .footer-right {
+        float: right;
+    }
 
-	font-size: 20px;
-	color: #ffffff;
-	text-align: center;
-	line-height: 35px;
+        .footer-distributed .footer-right p {
+            display: inline-block;
+            vertical-align: top;
+            margin: 15px 42px 0 0;
+            color: #ffffff;
+        }
 
-	margin-right: 3px;
-	margin-bottom: 5px;
-}
+    /* The contact form */
 
-/* Footer Right */
+    .footer-distributed form {
+        display: inline-block;
+    }
 
-.footer-distributed .footer-right{
-	float: right;
-}
+        .footer-distributed form input,
+        .footer-distributed form textarea {
+            display: block;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background-color: #1f2022;
+            box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            border: none;
+            resize: none;
+            font: inherit;
+            font-size: 14px;
+            font-weight: normal;
+            color: #d1d2d2;
+            width: 400px;
+            padding: 15px;
+        }
 
-.footer-distributed .footer-right p{
-	display: inline-block;
-	vertical-align: top;
-	margin: 15px 42px 0 0;
-	color: #ffffff;
-}
+    .footer-distributed ::-webkit-input-placeholder {
+        color: #5c666b;
+    }
 
-/* The contact form */
+    .footer-distributed ::-moz-placeholder {
+        color: #5c666b;
+        opacity: 1;
+    }
 
-.footer-distributed form{
-	display: inline-block;
-}
-
-.footer-distributed form input,
-.footer-distributed form textarea{
-	display: block;
-	border-radius: 3px;
-	box-sizing: border-box;
-	background-color:  #1f2022;
-	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-	border: none;
-	resize: none;
-
-	font: inherit;
-	font-size: 14px;
-	font-weight: normal;
-	color:  #d1d2d2;
-
-	width: 400px;
-	padding: 15px;
-}
-
-.footer-distributed ::-webkit-input-placeholder {
-	color:  #5c666b;
-}
-
-.footer-distributed ::-moz-placeholder {
-	color:  #5c666b;
-	opacity: 1;
-}
-
-.footer-distributed :-ms-input-placeholder{
-	color:  #5c666b;
-}
+    .footer-distributed :-ms-input-placeholder {
+        color: #5c666b;
+    }
 
 
-.footer-distributed form input{
-	height: 46px;
-	margin-bottom: 15px;
-}
+    .footer-distributed form input {
+        height: 46px;
+        margin-bottom: 15px;
+    }
 
-.footer-distributed form textarea{
-	height: 100px;
-	margin-bottom: 20px;
-}
+    .footer-distributed form textarea {
+        height: 100px;
+        margin-bottom: 20px;
+    }
 
-.footer-distributed form button{
-	border-radius: 3px;
-	background-color:  #33383b;
-	color: #ffffff;
-	border: 0;
-	padding: 15px 50px;
-	font-weight: bold;
-	float: right;
-}
+    .footer-distributed form button {
+        border-radius: 3px;
+        background-color: #33383b;
+        color: #ffffff;
+        border: 0;
+        padding: 15px 50px;
+        font-weight: bold;
+        float: right;
+    }
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 1000px) {
 
-	.footer-distributed {
-		font: bold 14px sans-serif;
-	}
+    .footer-distributed {
+        font: bold 14px sans-serif;
+    }
 
-	.footer-distributed .footer-company-name{
-		font-size: 12px;
-	}
+        .footer-distributed .footer-company-name {
+            font-size: 12px;
+        }
 
-	.footer-distributed form input,
-	.footer-distributed form textarea{
-		width: 250px;
-	}
+        .footer-distributed form input,
+        .footer-distributed form textarea {
+            width: 250px;
+        }
 
-	.footer-distributed form button{
-		padding: 10px 35px;
-	}
-
+        .footer-distributed form button {
+            padding: 10px 35px;
+        }
 }
 
 @media (max-width: 800px) {
 
-	.footer-distributed{
-		padding: 30px;
-	}
+    .footer-distributed {
+        padding: 30px;
+    }
 
-	.footer-distributed .footer-left,
-	.footer-distributed .footer-right{
-		float: none;
-		max-width: 300px;
-		margin: 0 auto;
-	}
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-right {
+            float: none;
+            max-width: 300px;
+            margin: 0 auto;
+        }
 
-	.footer-distributed .footer-left{
-		margin-bottom: 40px;
-	}
+        .footer-distributed .footer-left {
+            margin-bottom: 40px;
+        }
 
-	.footer-distributed form{
-		margin-top: 30px;
-	}
+        .footer-distributed form {
+            margin-top: 30px;
+        }
 
-	.footer-distributed form{
-		display: block;
-	}
+        .footer-distributed form {
+            display: block;
+        }
 
-	.footer-distributed form button{
-		float: none;
-
-	}
+            .footer-distributed form button {
+                float: none;
+            }
 }
 
 .col-md-5 {
@@ -246,19 +239,19 @@ textarea {
 }
 
 .chatname {
-    text-align: center
+    text-align: center;
 }
 
 .fb-profile img.fb-image-lg {
     z-index: 0;
-    width: 100%;  
+    width: 100%;
     margin-bottom: 10px;
 }
 
 .fb-image-profile {
     margin: -90px 10px 0px 50px;
     z-index: 9;
-    width: 20%; 
+    width: 20%;
 }
 
 @media (max-width:768px) {
@@ -287,7 +280,7 @@ textarea {
     padding-left: 40px;
 }
 
-.btn.btn-success.login{
+.btn.btn-success.login {
     margin-left: 50px;
 }
 
@@ -299,12 +292,12 @@ textarea {
     margin-left: 100px;
 }
 
-.cookie{
+.cookie {
     padding-left: 210px;
 }
 
 .colorr {
-    color: black
+    color: black;
 }
 
 .list {
@@ -325,24 +318,23 @@ textarea {
 }
 
 .col-sm-6.col-md-8.profile {
-    padding-right: 100px;
+    padding-right: 1px;
 }
 
 img.displayed {
     display: block;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto;
 }
 
 .welll {
-  min-height: 20px;
-  padding: 19px;
-  margin-bottom: 20px;
-  background-color: #f5f5f5;
-  border: 1px solid #e3e3e3;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
-  margin-top: 50px;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    margin-top: 50px;
 }
-
