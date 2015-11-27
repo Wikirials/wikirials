@@ -9,8 +9,7 @@
 <div class="container">
     <h2>Tutoriais:</h2>
     <div class="well">
-        
-        <br>
+
 
 
         @using (Html.BeginForm())
@@ -30,11 +29,25 @@
 
             <div class="row">
 
-                <div class="col-md-3">
+                @if (item.Files != null)
+                {
+                    if (item.Files.Any(f => f.FileType == FileType.Pic))
+                    {
+                        <div class="col-md-3">    
+                            <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Pic).FileId" alt="pic" width="260" height="180"/>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-3">
 
-                    <img src="http://placehold.it/260x180" alt="">
+                            <img src="http://placehold.it/260x180" alt="">
 
-                </div>
+                        </div>
+                    }
+                }
+
+
                 <div class="col-md-9">
                     <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
                     <p>
@@ -43,7 +56,7 @@
                     <p><div class="btn btn-info btn-sm">@Html.ActionLink("Read More", "Details", new { id = item.ID })</div></p>
                     <br />
                     <ul class="list-inline">
-                        <li><i class="glyphicon glyphicon-user"></i> by <a href="">Zé</a> | </li>
+                        <li><i class="glyphicon glyphicon-user"></i> by <a href="">@Html.DisplayFor(modelItem => item.User.Name)</a> | </li>
                         <li><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(modelItem => item.Date)| </li>
                         <li> @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </li>
                     </ul>
@@ -99,33 +112,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Classification)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContentType)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Classification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContentType)
+            </td>
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

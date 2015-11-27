@@ -18,9 +18,12 @@
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
                 <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" class="img-rounded img-responsive" />
-                    </div>
+                    @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+                    {
+                        <div class="col-sm-6 col-md-4">
+                            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" class="img-rounded img-responsive" />
+                        </div>
+                    }
                     <div class="col-sm-6 col-md-8 profile">
                         <br>
                         <p><i class="glyphicon glyphicon-user"></i> @Html.DisplayFor(model => model.Name)</p>
@@ -43,92 +46,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="jumbotron">
-    <h2>Profile</h2>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateofBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateofBirth)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-
-        @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
-        {
-            <dt>
-                Avatar
-            </dt>
-            <dd>
-                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" />
-            </dd>
-        }
-
-
-        @using (Html.BeginForm("userdet", "Home", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            <dd>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        <input type="file" id="Avatar" name="upload" />
-                    </div>
-                </div>
-            </dd>
-
-            <dd>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
-                    </div>
-                </div>
-            </dd>
-        }
-
-    </dl>
-    @Html.ActionLink("Change Password", "Manage", "Account", routeValues: null, htmlAttributes: new { id = "Manage" })
-    @*<div>
-            @Html.ActionLink("Apagar Conta", "Delete", "Account", routeValues: null, htmlAttributes: new { id = "Delete" })
-        </div>*@
-</div>
 
 <div class="jumbotron">
     <h2>Profile</h2>
