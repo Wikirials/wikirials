@@ -20,7 +20,7 @@ namespace Wikirials.Controllers
         // GET: /Tutorial/
         public ActionResult Index(string searchString)
         {
-            var tutorial = from s in db.Tutorials.Include(p => p.Files)
+            var tutorial = from s in db.Tutorials.Include(p => p.Files).Include(u => u.User)
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
