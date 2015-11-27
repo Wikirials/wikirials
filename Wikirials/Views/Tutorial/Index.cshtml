@@ -33,10 +33,8 @@
                 {
                     if (item.Files.Any(f => f.FileType == FileType.Pic))
                     {
-                        <div class="col-md-3">
-
-                            <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Pic).FileId" alt="pic" />
-
+                        <div class="col-md-3">    
+                            <img src="~/File?id=@item.Files.First(f => f.FileType == FileType.Pic).FileId" alt="pic" width="260" height="180"/>
                         </div>
                     }
                     else
