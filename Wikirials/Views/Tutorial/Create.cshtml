@@ -1,11 +1,11 @@
 ﻿@model Wikirials.Models.Tutorial
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create a Tutorial";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create a tutorial</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm("Create", "Tutorial", null, FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })) 
