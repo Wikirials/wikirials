@@ -337,3 +337,7 @@ img.displayed {
     box-shadow: 0 0px 35px rgba(15, 20, 15, 10);
     margin-top: 50px;
 }
+
+.profilefootercustom {
+    margin-right: 10px;
+}
