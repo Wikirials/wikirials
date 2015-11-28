@@ -17,6 +17,7 @@ namespace Wikirials.Models
         public byte[] Content { get; set; }
         public FileType FileType { get; set; }
 
+        [Required]
         public virtual Tutorial Tutorial { get; set; }
     }
 }

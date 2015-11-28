@@ -19,7 +19,6 @@ namespace Wikirials.Models
         public string Type { get; set; }
         public string ContentType { get; set; }
 
-        
 
         public virtual ApplicationUser User { get; set; }
         
