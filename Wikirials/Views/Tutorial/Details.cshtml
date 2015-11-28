@@ -12,13 +12,13 @@
 
 
 
-            <h1>@Html.DisplayFor(model => model.Title)<span class="pull-right "><a href="@Url.Action("Edit", "Tutorial", new { id = Model.ID })" class="btn btn-info btn-sm">Edit</a></span></h1>
-
+            <h1>@Html.DisplayFor(model => model.Title)<span class="pull-right "><a href="@Url.Action("Edit", "Tutorial", new { id = Model.ID })" class="btn btn-warning">Edit</a></span></h1>
+            <div class="grow pic" >
             @if (Model.FileMains.Any(f => f.FileType == FileType.Pic))
             {
-                <img class="displayed" src="~/FileMain?id=@Model.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" />
+                <img class="displayed" src="~/FileMain?id=@Model.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic"  />
             }
-
+                </div>
             <br>
             <div>
 
