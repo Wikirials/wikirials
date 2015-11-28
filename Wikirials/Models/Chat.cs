@@ -10,7 +10,6 @@ namespace Wikirials.Models
     public class Chat
     {
         public int ID { get; set; }
-        public int ChatID { get; set; }
         public string Password { get; set; }
         
         
