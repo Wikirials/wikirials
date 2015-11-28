@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Wikirials.Models
 {
-    public class File
+    public class FileMain
     {
-        public int FileId { get; set; }
+        public int FileMainId { get; set; }
         [StringLength(255)]
         public string FileName { get; set; }
         [StringLength(100)]
@@ -17,6 +17,6 @@ namespace Wikirials.Models
         public byte[] Content { get; set; }
         public FileType FileType { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public virtual Tutorial Tutorial { get; set; }
     }
 }

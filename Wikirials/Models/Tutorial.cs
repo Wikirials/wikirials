@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Wikirials.Models
 {
@@ -25,6 +26,6 @@ namespace Wikirials.Models
         public virtual ICollection<Group> Groups { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
-        public virtual ICollection<File> Files { get; set; }
+        public virtual ICollection<FileMain> FileMains { get; set; }
     }
 }

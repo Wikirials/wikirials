@@ -2,10 +2,10 @@
 @using System.Data.Entity
 @model Wikirials.Models.ApplicationUser
 
-@*@{
-
-        ViewBag.Title = "Details";
-    }*@
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
 @*<h2>@ViewBag.Title</h2>*@
@@ -50,7 +50,7 @@
 
 
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h2>Profile</h2>
     <hr />
     <dl class="dl-horizontal">
@@ -118,10 +118,10 @@
 
     </dl>
     @Html.ActionLink("Change Password", "Manage", "Account", routeValues: null, htmlAttributes: new { id = "Manage" })
-    @*<div>
+    <div>
             @Html.ActionLink("Apagar Conta", "Delete", "Account", routeValues: null, htmlAttributes: new { id = "Delete" })
-        </div>*@
-</div>
+        </div>
+</div>*@
 
 
 @section Scripts {

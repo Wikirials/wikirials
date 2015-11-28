@@ -24,6 +24,7 @@ namespace Wikirials.DAL
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tutorial> Tutorials { get; set; }
         public DbSet<File> Files { get; set; }
+        public DbSet<FileMain> FileMains { get; set; }
 
         public static ApplicationDbContext Create()
         {

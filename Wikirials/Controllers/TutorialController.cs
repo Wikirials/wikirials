@@ -20,7 +20,7 @@ namespace Wikirials.Controllers
         // GET: /Tutorial/
         public ActionResult Index(string searchString)
         {
-            var tutorial = from s in db.Tutorials.Include(p => p.Files).Include(u => u.User)
+            var tutorial = from s in db.Tutorials.Include(p => p.FileMains).Include(u => u.User)
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -66,7 +66,7 @@ namespace Wikirials.Controllers
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    var pic = new File
+                    var pic = new FileMain
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = FileType.Pic,
@@ -76,7 +76,7 @@ namespace Wikirials.Controllers
                     {
                         pic.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    tutorial.Files = new List<File> { pic };
+                    tutorial.FileMains = new List<FileMain> { pic };
                 }
 
                 tutorial.User = currentuser;
@@ -119,11 +119,11 @@ namespace Wikirials.Controllers
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    if (tutorialToUpdate.Files.Any(f => f.FileType == FileType.Pic))
+                    if (tutorialToUpdate.FileMains.Any(f => f.FileType == FileType.Pic))
                     {
-                        db.Files.Remove(tutorialToUpdate.Files.First(f => f.FileType == FileType.Pic));
+                        db.FileMains.Remove(tutorialToUpdate.FileMains.First(f => f.FileType == FileType.Pic));
                     }
-                    var pic = new File
+                    var pic = new FileMain
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = FileType.Pic,
@@ -133,7 +133,7 @@ namespace Wikirials.Controllers
                     {
                         pic.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    tutorialToUpdate.Files = new List<File> { pic };
+                    tutorialToUpdate.FileMains = new List<FileMain> { pic };
                 }
 
                 db.Entry(tutorialToUpdate).State = EntityState.Modified;

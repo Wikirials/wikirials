@@ -303,14 +303,139 @@ namespace Wikirials.Controllers
         }
 
         //
-        // POST: /Account/ExternalLogin
+        // POST: /Account/Disassociate
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult ExternalLogin(string provider, string returnUrl)
+        public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
-            // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            ManageMessageId? message = null;
+            IdentityResult result = await UserManager.RemoveLoginAsync(User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+            if (result.Succeeded)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                await SignInAsync(user, isPersistent: false);
+                message = ManageMessageId.RemoveLoginSuccess;
+            }
+            else
+            {
+                message = ManageMessageId.Error;
+            }
+            return RedirectToAction("Manage", new { Message = message });
+        }
+
+        //
+        // GET: /Account/Manage
+        public ActionResult Manage(ManageMessageId? message)
+        {
+
+            ViewBag.StatusMessage =
+                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                : message == ManageMessageId.Error ? "An error has occurred."
+                : "";
+            ViewBag.HasLocalPassword = HasPassword();
+            ViewBag.ReturnUrl = Url.Action("Manage");
+            return View();
+        }
+
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Delete(string id, string role)
+        //{
+        //    // Check for for both ID and Role and exit if not found
+        //    if (id == null || role == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+
+        //    // Look for user in the UserStore
+        //    var user = UserManager.Users.SingleOrDefault(u => u.Id == id);
+
+        //    // If not found, exit
+        //    if (user == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    // Remove user from role first!
+        //    var remFromRole = await UserManager.RemoveFromRoleAsync(id, role);
+
+        //    // If successful
+        //    if (remFromRole.Succeeded)
+        //    {
+        //        // Remove user from UserStore
+        //        var results = await UserManager.DeleteAsync(user);
+
+        //        // If successful
+        //        if (results.Succeeded)
+        //        {
+        //            // Redirect to Users page
+        //            return RedirectToAction("Index", "Users", new { area = "Dashboard" });
+        //        }
+        //        else
+        //        {
+        //            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+
+        //}
+
+        //
+        // POST: /Account/Manage
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Manage(ManageUserViewModel model)
+        {
+            bool hasPassword = HasPassword();
+            ViewBag.HasLocalPassword = hasPassword;
+            ViewBag.ReturnUrl = Url.Action("Manage");
+            if (hasPassword)
+            {
+                if (ModelState.IsValid)
+                {
+                    IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                        await SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
+                }
+            }
+            else
+            {
+                // User does not have a password so remove any validation errors caused by a missing OldPassword field
+                ModelState state = ModelState["OldPassword"];
+                if (state != null)
+                {
+                    state.Errors.Clear();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    IdentityResult result = await UserManager.AddPasswordAsync(User.Identity.GetUserId(), model.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //
@@ -349,6 +474,17 @@ namespace Wikirials.Controllers
         }
 
         //
+        // POST: /Account/ExternalLogin
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ExternalLogin(string provider, string returnUrl)
+        {
+            // Request a redirect to the external login provider
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+        }
+
+        //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -376,6 +512,33 @@ namespace Wikirials.Controllers
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
+        }
+
+        //
+        // POST: /Account/LinkLogin
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LinkLogin(string provider)
+        {
+            // Request a redirect to the external login provider to link a login for the current user
+            return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
+        }
+
+        //
+        // GET: /Account/LinkLoginCallback
+        public async Task<ActionResult> LinkLoginCallback()
+        {
+            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
+            if (loginInfo == null)
+            {
+                return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
+            }
+            IdentityResult result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Manage");
+            }
+            return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
         }
 
         //
@@ -434,6 +597,14 @@ namespace Wikirials.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public ActionResult RemoveAccountList()
+        {
+            var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
+            ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
+            return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -466,12 +637,41 @@ namespace Wikirials.Controllers
             }
         }
 
+        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(UserManager));
+        }
+
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }
+        }
+
+        private bool HasPassword()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                return user.PasswordHash != null;
+            }
+            return false;
+        }
+
+        private void SendEmail(string email, string callbackUrl, string subject, string message)
+        {
+            // For information on sending mail, please visit http://go.microsoft.com/fwlink/?LinkID=320771
+        }
+
+        public enum ManageMessageId
+        {
+            ChangePasswordSuccess,
+            SetPasswordSuccess,
+            RemoveLoginSuccess,
+            Error
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
