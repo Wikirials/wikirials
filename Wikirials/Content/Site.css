@@ -343,33 +343,37 @@ img.displayed {
 }
 
 
-.btn-glyphicon {
-    padding: 8px;
-    background: #ffffff;
-    margin-right: 4px;
-}
+.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
 
-.icon-btn {
-    padding: 1px 15px 3px 2px;
-    border-radius: 50px;
-}
 
-.fileUpload {
-    position: relative;
+
+.grow img {
+  width: 570px;
+  height: 360px;
+  
+ 
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
+}
+ 
+.grow img:hover {
+  width: 150%;
+  height: 150%;
+}
+.pic{
+    height: 360px;
+    width: 570px;
     overflow: hidden;
-}
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
+    margin: 20px;
+    -webkit-box-shadow: 5px 5px 5px #111;
+    box-shadow: 2px -2px 5px #888585;
+    margin-left: auto;
+    margin-right: auto;
 
-.formimage {
-    display: inline;
+
+
 }
