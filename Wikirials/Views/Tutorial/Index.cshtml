@@ -15,8 +15,8 @@
         @using (Html.BeginForm())
         {
             <p>
-                Title: @Html.TextBox("SearchString")
-                <input type="submit" value="Filter" />
+                <b>Tutorial Title:</b> @Html.TextBox("SearchString")
+                <input type="submit" value="Search" />
             </p>
         }
 
@@ -58,8 +58,9 @@
                     <br />
                     <ul class="list-inline">
                         <li><i class="glyphicon glyphicon-user"></i> by <a href="">@Html.DisplayFor(modelItem => item.User.Name)</a> | </li>
-                        <li><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(modelItem => item.Date)| </li>
-                        <li> @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </li>
+                        <li><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(modelItem => item.Date) | </li>
+                        <li><i class="glyphicon glyphicon-pencil"></i> @Html.ActionLink("Edit", "Edit", new { id = item.ID }) | </li>
+                        <li><i class="glyphicon glyphicon-remove"></i> @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </li>
                     </ul>
                 </div>
             </div>
