@@ -26,7 +26,7 @@ namespace Wikirials.Controllers
             {
                 tutorial = tutorial.Where(s => s.Title.Contains(searchString));
             }
-              
+
             return View(tutorial);
         }
 
@@ -177,5 +177,6 @@ namespace Wikirials.Controllers
             }
             base.Dispose(disposing);
         }
+       
     }
 }
