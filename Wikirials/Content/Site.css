@@ -343,5 +343,33 @@ img.displayed {
 }
 
 
-.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
-.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+.btn-glyphicon {
+    padding: 8px;
+    background: #ffffff;
+    margin-right: 4px;
+}
+
+.icon-btn {
+    padding: 1px 15px 3px 2px;
+    border-radius: 50px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.formimage {
+    display: inline;
+}

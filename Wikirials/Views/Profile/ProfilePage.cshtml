@@ -33,7 +33,14 @@
                         <div class="panel-footer profilefootercustom">
                             <span class="pull-right">
                                 <a id="edituserdet" href="" class="btn btn-success login"><i class="glyphicon glyphicon-pencil"></i> Edit Profile</a>
-                                <a id="changeavatar" href="" class="btn btn-primary login"><i class="glyphicon glyphicon-user"></i> Change Avatar</a>
+                                @*<a id="changeavatar" href="" class="btn btn-primary login"><i class="glyphicon glyphicon-user"></i> Change Avatar</a>*@
+                                @using (Html.BeginForm("ProfilePage", "Profile", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "formimage" }))
+                                {
+                                    <span class="fileUpload btn btn-primary login">
+                                        <i class="glyphicon glyphicon-user"></i> Change Avatar
+                                        <input id="Avatar" type="file" name="upload" onchange="this.form.submit()" class="upload" />
+                                    </span>
+                                }
                                 <a id="changepassword" href="/Account/Manage" class="btn btn-danger login"><i class="glyphicon glyphicon-barcode"></i> Change Password</a>
                                 @*<a href="edit.html" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>*@
                             </span>
@@ -116,11 +123,12 @@
     </dl>
     @Html.ActionLink("Change Password", "Manage", "Account", routeValues: null, htmlAttributes: new { id = "Manage" })
     <div>
-            @Html.ActionLink("Apagar Conta", "Delete", "Account", routeValues: null, htmlAttributes: new { id = "Delete" })
-        </div>
+        @Html.ActionLink("Apagar Conta", "Delete", "Account", routeValues: null, htmlAttributes: new { id = "Delete" })
+    </div>
 </div>*@
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
 }
