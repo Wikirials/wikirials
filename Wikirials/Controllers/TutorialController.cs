@@ -64,7 +64,7 @@ namespace Wikirials.Controllers
 
             Tutorial tutorial = db.Tutorials.Find(id);
 
-            tutorialcomment.Tutorials = tutorial;
+            tutorialcomment.Tutorial = tutorial;
 
             if (tutorialcomment == null)
             {
@@ -175,14 +175,14 @@ namespace Wikirials.Controllers
 
             if (ModelState.IsValid)
             {
-                int tutorialid = tutorial.ID;
-                var tutorialToUpdate = db.Tutorials.SingleOrDefault(u => u.ID == tutorialid);
+                //int tutorialid = tutorial.ID;
+                //var tutorialToUpdate = db.Tutorials.SingleOrDefault(u => u.ID == tutorialid);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    if (tutorialToUpdate.FileMains.Any(f => f.FileType == FileType.Pic))
+                    if (tutorial.FileMains.Any(f => f.FileType == FileType.Pic))
                     {
-                        db.FileMains.Remove(tutorialToUpdate.FileMains.First(f => f.FileType == FileType.Pic));
+                        db.FileMains.Remove(tutorial.FileMains.First(f => f.FileType == FileType.Pic));
                     }
                     var pic = new FileMain
                     {
@@ -194,10 +194,10 @@ namespace Wikirials.Controllers
                     {
                         pic.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    tutorialToUpdate.FileMains = new List<FileMain> { pic };
+                    tutorial.FileMains = new List<FileMain> { pic };
                 }
-
-                db.Entry(tutorialToUpdate).State = EntityState.Modified;
+                
+                db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -224,7 +224,10 @@ namespace Wikirials.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tutorial tutorial = db.Tutorials.Find(id);
+            //Tutorial tutorial = db.Tutorials.Find(id);
+            Tutorial tutorial = db.Tutorials.Include(c => c.Comments)
+                .Where(i => i.ID == id)
+                .Single();
             db.Tutorials.Remove(tutorial);
             db.SaveChanges();
             return RedirectToAction("Index");

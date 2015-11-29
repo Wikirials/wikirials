@@ -8,7 +8,7 @@ namespace Wikirials.ViewModels
 {
     public class TutorialComment
     {
-        public Tutorial Tutorials;
+        public Tutorial Tutorial;
         public Comment Comment;
         public IEnumerable<Comment> Comments;
     }
