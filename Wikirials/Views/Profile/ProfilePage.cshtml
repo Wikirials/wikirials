@@ -30,23 +30,24 @@
                         <p><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(model => model.DateofBirth)</p>
 
                         <p><i class="glyphicon glyphicon-heart-empty"></i> @Html.DisplayFor(model => model.Gender)</p>
-                        <div class="panel-footer profilefootercustom">
+                       
+                         <div class="panel-footer profilefootercustom">
                             <div class="row">
                             <span class="pull-right">
-                                <p><a id="edituserdet" href="" class="btn btn-success login"><i class="glyphicon glyphicon-pencil"></i> Edit Profile</a></p>
+                                <a id="edituserdet" href="" class="btn btn-success login"><i class="glyphicon glyphicon-pencil"></i> Edit Profile</a>
                                 @*<a id="changeavatar" href="" class="btn btn-primary login"><i class="glyphicon glyphicon-user"></i> Change Avatar</a>*@
-<p>
-                                @using (Html.BeginForm("ProfilePage", "Profile", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "formimage" }))
-                                {
-                                    <span class="fileUpload btn btn-primary login">
-                                        <i class="glyphicon glyphicon-user"></i> Change Avatar
-                                        <input id="Avatar" type="file" name="upload" onchange="this.form.submit()" class="upload" />
+                                <span style="display: -webkit-inline-box; display: -inline-box;">
+                                    @using (Html.BeginForm("ProfilePage", "Profile", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "formimage" }))
+                                    {
+                                        <span class="fileUpload btn btn-primary login">
+                                            <i class="glyphicon glyphicon-user"></i> Change Avatar
+                                            <input id="Avatar" type="file" name="upload" onchange="this.form.submit()" class="upload" />
+                                        </span>
+                                    }
                                     </span>
-                                }
-                                </p><p>
-                                    <a id="changepassword" href="/Account/Manage" class="btn btn-danger login"><i class="glyphicon glyphicon-barcode"></i> Change Password</a></p>
-                                @*<a href="edit.html" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>*@
-                            </span>
+                                    <a id="changepassword" href="/Account/Manage" class="btn btn-danger login"><i class="glyphicon glyphicon-barcode"></i> Change Password</a>
+                                    @*<a href="edit.html" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>*@
+</span>
                         </div>
                     </div>
                 </div>
