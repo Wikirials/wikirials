@@ -4,12 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Category list</h2>
+<h2>Category list <span class="pull-right "><a href="/Category/Create" class="btn btn-success">Create</a></span></h2>
 
-<p class="marginclass">
+    @*<p>
+    
     @Html.ActionLink("Create a new category", "Create")
-</p>
+        </p>*@
+
+
+    <div class="container well">
 <table class="table">
+    
+    
     @*<tr>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -24,10 +30,11 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
 
 </table>
+</div>

@@ -12,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizontal well">
         <!--<h4>Tutorial</h4>-->
         <hr />
         @Html.ValidationSummary(true)
@@ -81,17 +81,26 @@
                 <input type="file" id="Pdf" name="upload" />
             </div>
         </form>
+
+        <br><br><br>
             <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default create" />
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
+
+
+                <div class="col-md-offset-2 col-md-2" style="margin-left:0px;">
+                    <a href="/Tutorial/Index" class="btn btn-danger">Cancel</a>
+                </div>
+
+
         </div>
     </div>
 }
 <br />
-<div class="listtutorial">
+@*<div class="list">
     @Html.ActionLink("Tutorial List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
