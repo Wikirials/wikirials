@@ -302,7 +302,7 @@ textarea {
 
 .about {
     padding-left: 40px;
-    margin-left: 465px;
+    margin-left: 450px;
 }
 
 .wikirials {
@@ -318,7 +318,7 @@ textarea {
 }
 
 .checkbox.login {
-    margin-left: 200px;
+    margin-left: 140px;
 }
 
 .cookie {
@@ -429,3 +429,64 @@ img.displayed {
 
 .btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
 .icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}
+
+.aboutul {
+    text-align: center;
+}
+
+.symbol1 {
+    margin-left: 75px;
+}
+
+.movement {
+    margin-top: 50px;
+    margin-left: 250px;
+}
+
+.symbol {
+    margin-left: 275px;
+    margin-top: -70px;
+}
+
+.adress {
+    margin-top: -52px;
+    margin-left: -3px;
+}
+
+.team {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.login1 {
+    margin-left: 500px;
+}
+
+.loginForm {
+    margin-left: 225px;
+}
+
+.colmove {
+    margin-left: 55px;
+}
+
+.btn.btn-info.login {
+    margin-left: 50px;
+}
+
+.form-group1 {
+    margin-left: 30px;
+}
+
+.titleee {
+    margin-left: 425px;
+}
+
+.cookie {
+    text-align: center;
+    margin-left: -150px;
+}
+
+.btn.btn-success.register {
+    margin-left: 325px;
+}
