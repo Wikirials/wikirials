@@ -31,10 +31,11 @@
                         <div class="col-md-3">    
                             <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180"/>
                         </div>
-                    }
-                    else if (item.FileMains.Any(f => f.FileType == FileType.Pdf))
+                        }
+                     else if (item.FileMains.Any(f => f.FileType == FileType.Pdf))
                     {
-                        <embed src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" width="500" height="375" type='application/pdf'>
+                        <a href="@Url.Action("RetreiveFile", "File", new { id = @item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId})" target="_blank">OpenPdf </a>
+                        @*<embed src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" width="500" height="375" type='application/pdf'>*@
                         @*<iframe src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" type="ap" style="width:718px; height:700px;" frameborder="0">PDF File</iframe>*@
                     }
                     else
