@@ -274,6 +274,7 @@ textarea {
 
 .about {
     padding-left: 40px;
+    margin-left: 465px;
 }
 
 .wikirials {
@@ -289,7 +290,7 @@ textarea {
 }
 
 .checkbox.login {
-    margin-left: 100px;
+    margin-left: 200px;
 }
 
 .cookie {
@@ -400,4 +401,56 @@ img.displayed {
 
 .formimage {
     display: inline;
+}
+
+.marginclass {
+    margin-top: 50px;
+}
+
+.marginspecial {
+    margin-top: 4px;
+}
+
+.symbol {
+    margin-left: 300px;
+    margin-top: -70px;
+}
+
+.adress {
+    margin-top: -50px;
+    margin-left: -2px;
+}
+
+.btn.btn-success.login {
+    margin-left: 150px;
+}
+
+.btn.btn-info.login {
+    margin-left: 50px;
+}
+
+.login1 {
+    margin-left: 500px;
+}
+
+.colmove {
+    margin-left: 190px;
+}
+
+.titleee {
+    margin-left: 435px;
+}
+
+.symbol1 {
+    margin-left: 150px;
+}
+
+.movement {
+    margin-left: 225px;
+    padding-top: 25px;
+    padding-bottom: 40px;
+}
+
+.aboutul {
+    text-align: center;
 }
