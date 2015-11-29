@@ -11,6 +11,7 @@ using Wikirials.DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using PagedList;
+using Wikirials.ViewModels;
 
 namespace Wikirials.Controllers
 {
@@ -49,16 +50,53 @@ namespace Wikirials.Controllers
         // GET: /Tutorial/Details/5
         public ActionResult Details(int? id)
         {
+            TutorialComment tutorialcomment = new TutorialComment();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Tutorial tutorial = db.Tutorials.Find(id);
-            if (tutorial == null)
+
+            tutorialcomment.Tutorials = tutorial;
+
+            if (tutorialcomment == null)
             {
                 return HttpNotFound();
             }
-            return View(tutorial);
+
+            return View(tutorialcomment);
+        }
+
+        // POST: Comment/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details([Bind(Include = "ID,Text,DateTime")] Comment comment, int? id)
+        {
+            TutorialComment tutorialcomment = new TutorialComment();
+
+            tutorialcomment.Comment = comment;
+
+            if (ModelState.IsValid)
+            {
+                string userid = User.Identity.GetUserId();
+                var currentuser = db.Users.SingleOrDefault(u => u.Id == userid);
+
+                var currentutorial = db.Tutorials.SingleOrDefault(v => v.ID == id);
+
+
+                tutorialcomment.Comment.User = currentuser;
+                tutorialcomment.Comment.Tutorial = currentutorial;
+
+                db.Comments.Add(tutorialcomment.Comment);
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+
+            return View(tutorialcomment);
         }
 
         // GET: /Tutorial/Create
