@@ -1,4 +1,32 @@
 ﻿@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+/*Carrousel Css & media query*/
+.carrousel-style{
+    margin-top:30px;
+    width:400px;
+    position:center;
+    padding-left:50px;
+    margin:10px auto;
+}
+
+.right.carousel-control, .left.carousel-control {
+    opacity: 0;
+    filter:alpha(opacity=0); /* IE support */
+}
+
+.carousel .carousel-inner .item {
+    -webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+    -o-transition-duration: 0.1s;
+     transition-duration: 0.1s;
+}
+
+@media screen and (max-width: 600px) {
+
+    .carrousel-style {display:none;}
+
+}
+
+/**/
 
 body {
     padding-top: 50px;
@@ -274,6 +302,7 @@ textarea {
 
 .about {
     padding-left: 40px;
+    margin-left: 465px;
 }
 
 .wikirials {
@@ -289,7 +318,7 @@ textarea {
 }
 
 .checkbox.login {
-    margin-left: 100px;
+    margin-left: 200px;
 }
 
 .cookie {
@@ -398,52 +427,5 @@ img.displayed {
     filter: alpha(opacity=0);
 }
 
-.formimage {
-    display: inline;
-}
-
-.marginclass {
-    margin-top: 50px;
-}
-
-.marginspecial {
-    margin-top: 4px;
-}
-
-.symbol {
-    margin-left: 300px;
-    margin-top: -70px;
-}
-
-.adress {
-    margin-top: -50px;
-    margin-left: -2px;
-}
-
-.image {
-    margin-left: 5px;
-    margin-top: 1px;
-}
-
-.profile1 {
-    margin-top: -65px;
-    margin-left: 450px;
-}
-
-.hrspecial {
-    border-color: #8f9296;
-    margin-top: -55px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.profilespecial {
-    margin-left: -160px;
-    padding-top: 100px;
-}
-
-.rowspecial {
-    padding-bottom: 30px;
-    margin-right: -15px;
-    margin-left: -15px;
-}
+.btn-glyphicon { padding:8px; background:#ffffff; margin-right:4px; }
+.icon-btn { padding: 1px 15px 3px 2px; border-radius:50px;}

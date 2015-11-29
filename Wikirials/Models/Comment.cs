@@ -10,8 +10,9 @@ namespace Wikirials.Models
     public class Comment
     {
         public int ID { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Text { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
 
         

@@ -1,4 +1,4 @@
-﻿@model Wikirials.Models.Tutorial
+﻿@model Wikirials.ViewModels.TutorialComment
 
 @{
     ViewBag.Title = "Tutorial Details";
@@ -12,87 +12,155 @@
 
 
 
-            <h1>@Html.DisplayFor(model => model.Title)<span class="pull-right "><a href="@Url.Action("Edit", "Tutorial", new { id = Model.ID })" class="btn btn-warning">Edit</a></span></h1>
-            <div class="grow pic" >
-            @if (Model.FileMains.Any(f => f.FileType == FileType.Pic))
-            {
-                <img class="displayed" src="~/FileMain?id=@Model.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic"  />
-            }
-                </div>
+            <h1>@Html.DisplayFor(model => model.Tutorials.Title)<span class="pull-right "><a href="@Url.Action("Edit", "Tutorial", new { id = Model.Tutorials.ID })" class="btn btn-warning">Edit</a></span></h1>
+            <div class="grow pic">
+                @if (Model.Tutorials.FileMains.Any(f => f.FileType == FileType.Pic))
+                {
+                    <img class="displayed" src="~/FileMain?id=@Model.Tutorials.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" />
+                }
+            </div>
             <br>
             <div>
 
-                <p>@Html.DisplayFor(model => model.Body)</p>
+                <p>@Html.DisplayFor(model => model.Tutorials.Body)</p>
                 <div>
                     <a class="btn icon-btn btn-primary" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>Like</a>
 
                     <div class="pull-right">
-                        <span><b>Author:</b> Ze</span> <span><b>Category:</b> Agricultura</span> <span><b>Likes:</b> 123</span> <span><b>View Count:</b> 123</span>
+                        <span><b>Author:</b>@Html.DisplayFor(model => model.Tutorials.User.Name)</span> <span><b>Category:</b> Agricultura</span> <span><b>Likes:</b> 123</span> <span><b>View Count:</b> 123</span>
                     </div>
                 </div>
 
             </div>
 
-            <br>
-            <div>
-                <textarea style="width:100%;" name="new_message" placeholder="Type in your message" rows="5"></textarea>
-            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-            <br><br>
-            <div class="pull-right">
-                <a href="" class="btn btn-success" role="button">Comment</a>
-            </div>
-
-
-            <div class="row">
-                <div class="col-sm-1">
-                    <div class="thumbnail">
-                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                    </div><!-- /thumbnail -->
-                </div><!-- /col-sm-1 -->
-
-                <div class="col-sm-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-                        </div>
-                        <div class="panel-body">
-                            Panel content
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-1">
-                    <div class="thumbnail">
-                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                    </div><!-- /thumbnail -->
-                </div><!-- /col-sm-1 -->
-
-                <div class="col-sm-5">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-                        </div>
-                        <div class="panel-body">
-                            Panel content
-                        </div>
-                    </div>
+                <br>
+                <div>
+                    @Html.EditorFor(model => model.Comment.Text, new { htmlAttributes = new { @class = "form-control textareacomment" } })
+                    @Html.ValidationMessageFor(model => model.Comment.Text, "", new { @class = "text-danger" })
                 </div>
 
 
+                <br><br>
+                <div class="pull-right">
+                    <input type="submit" value="Comment" class="btn btn-success" />
+                </div>
+            }
+            
+            @foreach (var item in Model.Comments)
+            {
+                if (item.Tutorial == Model.Tutorials)
+                {
+                    <div class="row">
+                        <div class="col-sm-1">
+                            @if (item.User !=null && item.User.Files != null)
+                            {
+                                if (item.User.Files.Any(f => f.FileType == FileType.Avatar))
+                                {
+                                    <div class="thumbnail">
+                                        <img src="~/File?id=@item.User.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="pic" />
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </div>
+                                }
+                            }
+                        </div><!-- /col-sm-1 -->
 
+                        <div class="col-sm-5">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <strong>@Html.DisplayFor(modelItem => item.User.Name)</strong> <span class="text-muted">@Html.DisplayFor(modelItem =>item.DateTime)</span>
+                                </div>
+                                <div class="panel-body">
+                                    @Html.DisplayFor(modelItem => item.Text)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
 
-
-            </div>
         </fieldset>
     </div>
 </div>
 
 
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
+        <div class="form-horizontal">
+            <h4>Comment</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comment.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Comment.Text, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Comment.Text, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comment.DateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Comment.DateTime, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Comment.DateTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment.Text)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment.DateTime)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Comments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
 

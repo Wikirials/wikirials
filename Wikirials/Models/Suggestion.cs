@@ -11,9 +11,9 @@ namespace Wikirials.Models
     {
         public int ID { get; set; }
         public string Title { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Body { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
 
 
