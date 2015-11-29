@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Wikirials.Models.Tutorial>
+﻿@*@model IEnumerable<Wikirials.Models.Tutorial>*@
+@model PagedList.IPagedList<Wikirials.Models.Tutorial>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Tutorials";
@@ -7,53 +10,40 @@
 
 <br>
 <div class="container">
-    <h2>@ViewBag.Title:</h2>
+    <h2 class="marginspecial">@ViewBag.Title:</h2>
+    <div class="marginclass">
     <div class="well">
-
-
-
-        @using (Html.BeginForm())
+            @using (Html.BeginForm("Index", "Tutorial", FormMethod.Get))
         {
             <p>
-                <b>Tutorial Title:</b> @Html.TextBox("SearchString")
+                    <b>Tutorial Title:</b> @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                 <input type="submit" value="Search" />
             </p>
         }
-
-
-
-
-
+            <hr>
         @foreach (var item in Model)
         {
-
             <div class="row">
-
                 @if (item.FileMains != null)
                 {
                     if (item.FileMains.Any(f => f.FileType == FileType.Pic))
                     {
-                        <div class="col-md-3 form-inline">    
+                        <div class="col-md-3">    
                             <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180"/>
                         </div>
                     }
                     else
                     {
                         <div class="col-md-3">
-
                             <img src="http://placehold.it/260x180" alt="">
-
                         </div>
                     }
                 }
-
-
                 <div class="col-md-9">
-                    <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                        <h4>@Html.DisplayFor(modelItem => item.Title, new { currentFilter = ViewBag.CurrentFilter })</h4>
                     <p>
                         @Html.DisplayFor(modelItem => item.Body)
                     </p>
-                    
                     <p><a href="@Url.Action("Details", "Tutorial", new { id = item.ID })" class="btn btn-info btn-sm">Read More</a></p>
                     <br />
                     <ul class="list-inline">
@@ -67,10 +57,14 @@
             <hr>
         }
 
-
-
     </div>
 </div>
+</div>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 
 
@@ -84,9 +78,7 @@
 
 
 
-
-
-<h2>Index</h2>
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -144,4 +136,4 @@
         </tr>
     }
 
-</table>
+    </table>*@

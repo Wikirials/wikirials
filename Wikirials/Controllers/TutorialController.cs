@@ -10,6 +10,7 @@ using Wikirials.Models;
 using Wikirials.DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PagedList;
 
 namespace Wikirials.Controllers
 {
@@ -18,16 +19,31 @@ namespace Wikirials.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Tutorial/
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, string currentFilter, int? page)
         {
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+
             var tutorial = from s in db.Tutorials.Include(p => p.FileMains).Include(u => u.User)
                            select s;
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 tutorial = tutorial.Where(s => s.Title.Contains(searchString));
             }
-
-            return View(tutorial);
+              
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(tutorial.OrderByDescending(d => d.Date).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Tutorial/Details/5
@@ -80,6 +96,7 @@ namespace Wikirials.Controllers
                 }
 
                 tutorial.User = currentuser;
+                //tutorial.Date = DateTime.Now;
 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
