@@ -556,5 +556,13 @@ img.displayed {
 }
 
 .textareacomment {
-    resize:vertical;
+    resize: vertical;
+}
+
+.spanprofile {
+    display: inline-flex;
+}
+
+.profilebuttons {
+    margin-right: 5px;
 }
