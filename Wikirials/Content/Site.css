@@ -401,3 +401,21 @@ img.displayed {
 .formimage {
     display: inline;
 }
+
+.marginclass {
+    margin-top: 50px;
+}
+
+.marginspecial {
+    margin-top: 4px;
+}
+
+.symbol {
+    margin-left: 300px;
+    margin-top: -70px;
+}
+
+.adress {
+    margin-top: -50px;
+    margin-left: -2px;
+}
