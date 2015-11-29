@@ -509,7 +509,37 @@ img.displayed {
     margin-right: 10px;
 }
 
+.category.delete {
+    margin-left: 95px;
+    margin-top: -25px;
+}
+
+.form-actions.no-color.group {
+    margin-left: 100px;
+}
+
+.btn.btn-default.group {
+    margin-right: 10px;
+}
+
 .tutorial.delete {
     margin-left: 95px;
     margin-top: -25px;
+}
+
+.footer-links.footer {
+    margin-top: 15px;
+}
+
+.slightmovement {
+    margin-top: 25px;
+}
+
+.strongtext {
+    font-weight: bold;
+}
+
+.moverole {
+    margin-left: 80px;
+    margin-top: -22px;
 }

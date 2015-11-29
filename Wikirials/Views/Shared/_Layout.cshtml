@@ -41,8 +41,9 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Roles", "Index", "Role")</li>
                     <li>@Html.ActionLink("Category", "Index", "Category")</li>
+                    <li>@Html.ActionLink("Group", "Index", "Group")</li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Profile", "ProfilePage", "Profile")</li>
                             <li><a href="#">Edit Profile</a></li>
@@ -98,7 +99,7 @@
         <div class="footer-left">
             <img src="~/Images/Wikirials Brand.fw.png">
             <br />
-            <p class="footer-links">
+            <p class="footer-links footer">
                 @Html.ActionLink("About", "About", "Home")
                 -
                 @Html.ActionLink("Contact", "Contact", "Home")

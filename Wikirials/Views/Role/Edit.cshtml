@@ -12,10 +12,10 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model => model.Id)
-    <div>
+    <div class="strongtext">
         Role name
     </div>
-    <p>
+    <p class="moverole">
         @Html.TextBoxFor(model => model.Name)
     </p>
     <input type="submit" value="Save" />
