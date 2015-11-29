@@ -3,15 +3,18 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title:</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4 class="slightmovement">My account settings</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
-        <dd>
+            <dd>
+                @Html.ActionLink("Change Password", "Manage", "Account")
+            </dd>
+        @*<dd>
             [
             @if (Model.HasPassword)
             {
@@ -22,7 +25,7 @@
                 @Html.ActionLink("Create", "SetPassword")
             }
             ]
-        </dd>
+        </dd>*@
         <dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
