@@ -50,7 +50,12 @@ namespace Wikirials.Controllers
         // GET: /Tutorial/Details/5
         public ActionResult Details(int? id)
         {
+            var comment = from s in db.Comments.Include(t => t.Tutorial).Include(f => f.User.Files)
+                           select s;
+
             TutorialComment tutorialcomment = new TutorialComment();
+
+            tutorialcomment.Comments = comment;
 
             if (id == null)
             {
@@ -90,6 +95,7 @@ namespace Wikirials.Controllers
 
                 tutorialcomment.Comment.User = currentuser;
                 tutorialcomment.Comment.Tutorial = currentutorial;
+                tutorialcomment.Comment.DateTime = DateTime.Now;
 
                 db.Comments.Add(tutorialcomment.Comment);
                 db.SaveChanges();

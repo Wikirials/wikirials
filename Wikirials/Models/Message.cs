@@ -11,7 +11,7 @@ namespace Wikirials.Models
     {
         public int ID { get; set; }
         public string Text { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
 
 
