@@ -31,6 +31,7 @@
 
                         <p><i class="glyphicon glyphicon-heart-empty"></i> @Html.DisplayFor(model => model.Gender)</p>
                         <div class="panel-footer profilefootercustom">
+                            <div class="row">
                             <span class="pull-right">
                                 <a id="edituserdet" href="" class="btn btn-success login"><i class="glyphicon glyphicon-pencil"></i> Edit Profile</a>
                                 @*<a id="changeavatar" href="" class="btn btn-primary login"><i class="glyphicon glyphicon-user"></i> Change Avatar</a>*@
@@ -51,6 +52,58 @@
         </div>
     </div>
 </div>
+</div>
+
+
+
+
+
+
+<div class="container">
+    <h1>@ViewBag.Title</h1>
+    <div class="row profile">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="rowspecial">
+                    @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+                    {
+                        <div class="image">
+                            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" class="img-rounded img-responsive" />
+                        </div>
+                    }
+                    <div class="profile1">
+                        <br>
+                        <p><i class="glyphicon glyphicon-user"></i> @Html.DisplayFor(model => model.Name)</p>
+
+                        <p><i class="glyphicon glyphicon-envelope"></i> @Html.DisplayFor(model => model.Email)</p>
+
+                        <p><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(model => model.DateofBirth)</p>
+
+                        <p><i class="glyphicon glyphicon-heart-empty"></i> @Html.DisplayFor(model => model.Gender)</p>
+                        <div class="panel-footer profilefootercustom">
+                            <span class="profilespecial">
+                                <a id="edituserdet" href="" class="btn btn-success login"><i class="glyphicon glyphicon-pencil"></i> Edit Profile</a>
+                                @*<a id="changeavatar" href="" class="btn btn-primary login"><i class="glyphicon glyphicon-user"></i> Change Avatar</a>*@
+                                @using (Html.BeginForm("ProfilePage", "Profile", null, FormMethod.Post, new { enctype = "multipart/form-data", @class = "formimage" }))
+                                {
+                                    <span class="fileUpload btn btn-primary login">
+                                        <i class="glyphicon glyphicon-user"></i> Change Avatar
+                                        <input id="Avatar" type="file" name="upload" onchange="this.form.submit()" class="upload" />
+                                    </span>
+                                }
+                                <a id="changepassword" href="/Account/Manage" class="btn btn-danger login"><i class="glyphicon glyphicon-barcode"></i> Change Password</a>
+                                @*<a href="edit.html" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>*@
+                            </span>
+                        </div>
+                    </div>
+                    <hr class="hrspecial" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @*<div class="jumbotron">
     <h2>Profile</h2>
