@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -223,7 +224,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="Images\symbol.fw.png" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\Wikirials Brand.fw.png" />
     <Content Include="Images\Wikirials Brand.png" />
     <Content Include="Images\Wikirials.ico" />

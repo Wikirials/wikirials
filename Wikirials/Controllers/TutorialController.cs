@@ -41,7 +41,7 @@ namespace Wikirials.Controllers
             {
                 tutorial = tutorial.Where(s => s.Title.Contains(searchString));
             }
-
+              
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(tutorial.OrderByDescending(d => d.Date).ToPagedList(pageNumber, pageSize));
@@ -232,5 +232,6 @@ namespace Wikirials.Controllers
             }
             base.Dispose(disposing);
         }
+       
     }
 }

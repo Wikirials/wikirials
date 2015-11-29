@@ -8,6 +8,7 @@ namespace Wikirials.Models
     public enum FileType
     {
         Avatar = 1, Photo,
-        Pic = 2, Picture
+        Pic = 2, Picture,
+        Pdf = 3, File
     }
 }
