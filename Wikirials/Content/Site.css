@@ -1,7 +1,7 @@
 ﻿@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
 /*Carrousel Css & media query*/
 .carrousel-style{
-    margin-top:10px;
+    margin-top:30px;
     width:400px;
     position:center;
     padding-left:50px;
@@ -14,10 +14,10 @@
 }
 
 .carousel .carousel-inner .item {
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-     transition-duration: 1s;
+    -webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+    -o-transition-duration: 0.1s;
+     transition-duration: 0.1s;
 }
 
 @media screen and (max-width: 600px) {
