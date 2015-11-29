@@ -419,3 +419,31 @@ img.displayed {
     margin-top: -50px;
     margin-left: -2px;
 }
+
+.image {
+    margin-left: 5px;
+    margin-top: 1px;
+}
+
+.profile1 {
+    margin-top: -65px;
+    margin-left: 450px;
+}
+
+.hrspecial {
+    border-color: #8f9296;
+    margin-top: -55px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.profilespecial {
+    margin-left: -160px;
+    padding-top: 100px;
+}
+
+.rowspecial {
+    padding-bottom: 30px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
