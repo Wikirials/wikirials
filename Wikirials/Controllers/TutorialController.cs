@@ -224,10 +224,17 @@ namespace Wikirials.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //Tutorial tutorial = db.Tutorials.Find(id);
-            Tutorial tutorial = db.Tutorials.Include(c => c.Comments)
-                .Where(i => i.ID == id)
-                .Single();
+            Tutorial tutorial = db.Tutorials.Find(id);
+            //Tutorial tutorial = db.Tutorials.Include(c => c.Comments)
+            //    .Where(i => i.ID == id)
+            //    .Single();
+            var comment = tutorial.Comments;
+
+            foreach (var item in comment.ToList())
+            {
+                db.Comments.Remove(item);
+            }
+
             db.Tutorials.Remove(tutorial);
             db.SaveChanges();
             return RedirectToAction("Index");
