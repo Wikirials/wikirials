@@ -27,7 +27,7 @@
                     <a class="btn icon-btn btn-primary" href="#"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>Like</a>
 
                     <div class="pull-right">
-                        <span><b>Author:</b> Ze</span> <span><b>Category:</b> Agricultura</span> <span><b>Likes:</b> 123</span> <span><b>View Count:</b> 123</span>
+                        <span><b>Author:</b>@Html.DisplayFor(model => model.Tutorials.User.Name)</span> <span><b>Category:</b> Agricultura</span> <span><b>Likes:</b> 123</span> <span><b>View Count:</b> 123</span>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                         <div class="col-sm-5">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <strong>@Html.DisplayFor(modelItem => item.User.Name)</strong> <span class="text-muted">commented 5 days ago</span>
+                                    <strong>@Html.DisplayFor(modelItem => item.User.Name)</strong> <span class="text-muted">@Html.DisplayFor(modelItem =>item.DateTime)</span>
                                 </div>
                                 <div class="panel-body">
                                     @Html.DisplayFor(modelItem => item.Text)
