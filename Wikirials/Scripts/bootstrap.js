@@ -98,7 +98,7 @@ if (typeof jQuery === 'undefined') {
 
   Alert.VERSION = '3.3.5'
 
-  Alert.TRANSITION_DURATION = 150
+  Alert.TRANSITION_DURATION = 50
 
   Alert.prototype.close = function (e) {
     var $this    = $(this)
@@ -326,10 +326,10 @@ if (typeof jQuery === 'undefined') {
 
   Carousel.VERSION  = '3.3.5'
 
-  Carousel.TRANSITION_DURATION = 600
+  Carousel.TRANSITION_DURATION = 500
 
   Carousel.DEFAULTS = {
-    interval: 5000,
+    interval: 1500,
     pause: 'hover',
     wrap: true,
     keyboard: true
