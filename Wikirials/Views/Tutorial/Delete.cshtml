@@ -1,16 +1,15 @@
 ﻿@model Wikirials.Models.Tutorial
 
-@{
+@*@{
     ViewBag.Title = "Delete Tutorial";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title</h2>*@
 
-<h3>Are you sure you want to delete this tutorial?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
+<h2>Are you sure you want to delete this tutorial?</h2>
+
+    <dl class="dl-horizontal well">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -40,9 +39,22 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
-            @Html.ActionLink("Back to List", "Index")
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <input type="submit" value="Delete" class="btn btn-danger" />
         </div>
+    </div>
+
+        @*<div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+        
+        
+        <div class="col-md-offset-2 col-md-2" style="margin-left:0px;">
+            <a href="/Tutorial/Index" class="btn btn-warning">Cancel</a>
+        </div>
+    
+           
     }
-</div>
+

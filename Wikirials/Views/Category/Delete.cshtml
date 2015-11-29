@@ -4,12 +4,14 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete category</h2>
+@*<h2>Delete category</h2>*@
 
-<h3>Are you sure you want to delete the @Html.DisplayFor(model => model.Description) category?</h3>
+<h2>Are you sure you want to delete the @Html.DisplayFor(model => model.Description) category?</h2>
 <div>
     @*<h4>Category</h4>*@
     <hr />
+
+    <div class="well">
     <dl class="dl-horizontal">
         <dt>
             @*@Html.DisplayNameFor(model => model.Description)*@
@@ -21,15 +23,25 @@
         </dd>
 
     </dl>
-
+        </div>
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color category">
-            <input type="submit" value="Delete" class="btn btn-default category" /> |
-            <div class="category delete">
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+        <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <input type="submit" value="Delete" class="btn btn-danger" />
         </div>
+    </div>
+    @*<div class="category delete">
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
+       
+    
+    <div class="col-md-offset-2 col-md-2" style="margin-left:0px;">
+            <a href="/Category/Index" class="btn btn-warning">Cancel</a>
+        </div>
+    
+    
+    
     }
 </div>
