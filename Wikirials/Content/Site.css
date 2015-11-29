@@ -487,3 +487,29 @@ img.displayed {
 .btn.btn-success.register {
     margin-left: 325px;
 }
+
+.col-md-10.create {
+    margin-left: -10px;
+}
+
+.btn.btn-default.create {
+    margin-top: 25px;
+}
+
+.marginclass {
+    margin-top: 20px;
+    margin-left: 5px;
+}
+
+.form-actions.no-color.category {
+    margin-left: 100px;
+}
+
+.btn.btn-default.category {
+    margin-right: 10px;
+}
+
+.tutorial.delete {
+    margin-left: 95px;
+    margin-top: -25px;
+}
