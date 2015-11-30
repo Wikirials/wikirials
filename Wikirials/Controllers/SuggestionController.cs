@@ -27,6 +27,8 @@ namespace Wikirials.Controllers
         // GET: Suggestion/Details/5
         public ActionResult Details(int? id)
         {
+            id = (int)Session["sug"];
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -97,6 +99,8 @@ namespace Wikirials.Controllers
         {
             if (ModelState.IsValid)
             {
+                suggestion.Date = DateTime.Now;
+
                 db.Entry(suggestion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

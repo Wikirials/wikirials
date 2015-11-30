@@ -196,6 +196,8 @@ namespace Wikirials.Controllers
                     }
                     tutorial.FileMains = new List<FileMain> { pic };
                 }
+
+                tutorial.Date = DateTime.Now;
                 
                 db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();

@@ -5,9 +5,6 @@
 }
 
 <h2>@Html.DisplayFor(model => model.Group.Name)</h2>
-<p>
-    @Html.ActionLink("Create New", "Create", "Suggestion")
-</p>
 
 @*<div>
     <hr />
@@ -30,79 +27,58 @@
 
     </dl>
 </div>*@
-@*<p>
+<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Group.ID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>*@
+</p>
 
+<hr />
 
 <div class="suggestion">
-    <div class="well">
-        @*<table class="table">
+    <p>
+        @Html.ActionLink("Create Suggestion", "Create", "Suggestion")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion.Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Suggestions)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Suggestion.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Suggestion.Body)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Suggestion.Date)
-                </th>
-                <th></th>
-            </tr>*@
+                @if (item.Group.ID == Model.Group.ID) 
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Edit Suggestion", "Edit", "Suggestion") |
+                    @Html.ActionLink("Suggestion Details", "Details", "Suggestion") |
+                    @Html.ActionLink("Delete Suggestion", "Delete", "Suggestion")
+                </td>*@
+                }
+            </tr>
+        }
 
-            @foreach (var item in Model.Suggestions)
-            {
-                 @if (item.Group.ID == Model.Group.ID)
-                 { 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 }
-                 }
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                @*<tr>
-                    @if (item.Group.ID == Model.Group.ID)
-                    {
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Body)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                        </td>
-                    }
-                </tr>
-            }
+    </table>
 
-        </table>*@
-
-    </div>
 </div>
+
 @*<hr />*@
 
 @*<div class="suggestion">

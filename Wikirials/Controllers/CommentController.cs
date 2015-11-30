@@ -83,6 +83,8 @@ namespace Wikirials.Controllers
         {
             if (ModelState.IsValid)
             {
+                comment.DateTime = DateTime.Now;
+
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
