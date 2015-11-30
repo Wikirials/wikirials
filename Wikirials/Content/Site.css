@@ -575,3 +575,7 @@ img.displayed {
 .btn.btn-success.role {
     margin-top: 15px;
 }
+
+.slightmove {
+    margin-top: -10px;
+}
