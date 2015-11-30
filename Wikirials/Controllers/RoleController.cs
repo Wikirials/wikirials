@@ -16,6 +16,7 @@ using Wikirials.DAL;
 
 namespace Wikirials.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         private ApplicationUserManager _userManager;

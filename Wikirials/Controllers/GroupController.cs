@@ -141,6 +141,14 @@ namespace Wikirials.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Group group = db.Groups.Find(id);
+
+            var suggestion = group.Suggestions;
+
+            foreach (var item in suggestion.ToList())
+            {
+                db.Suggestions.Remove(item);
+            }
+
             db.Groups.Remove(group);
             db.SaveChanges();
             return RedirectToAction("Index");
