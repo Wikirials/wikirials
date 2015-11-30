@@ -8,6 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <br>
 <div class="container">
     <h2 class="marginspecial">@ViewBag.Title:</h2>
@@ -31,13 +32,7 @@
                             <div class="col-md-3">
                                 <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180" />
                             </div>
-                        }
-                        else if (item.FileMains.Any(f => f.FileType == FileType.Pdf))
-                        {
-                            <a href="@Url.Action("RetreiveFile", "File", new { id = @item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId})" target="_blank">OpenPdf </a>
-                            @*<embed src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" width="500" height="375" type='application/pdf'>*@
-                            @*<iframe src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" type="ap" style="width:718px; height:700px;" frameborder="0">PDF File</iframe>*@
-                        }
+                        }                       
                         else
                         {
                             <div class="col-md-3">
@@ -62,6 +57,7 @@
                         }
 
                         <p><a href="@Url.Action("Details", "Tutorial", new { id = item.ID })" class="btn btn-info btn-sm">Read More</a></p>
+                        <p>@Html.ActionLink("Download pdf", "ShowPdf", "SomeController", null, new { target = "_blank" })</p>
                         <br />
                         <ul class="list-inline">
                             <li><i class="glyphicon glyphicon-user"></i> by <a href="">@Html.DisplayFor(modelItem => item.User.Name)</a> | </li>
