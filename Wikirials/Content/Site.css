@@ -571,3 +571,7 @@ img.displayed {
     padding-right: -300px;
     padding-left: -300px;
 }
+
+.btn.btn-success.role {
+    margin-top: 15px;
+}
