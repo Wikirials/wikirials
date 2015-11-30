@@ -566,3 +566,8 @@ img.displayed {
 .profilebuttons {
     margin-right: 5px;
 }
+
+.col-md-3.create {
+    padding-right: -300px;
+    padding-left: -300px;
+}
