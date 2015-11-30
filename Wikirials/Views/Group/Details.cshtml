@@ -36,7 +36,7 @@
 
 <div class="suggestion">
     <p>
-        @Html.ActionLink("Create New", "Create", "Suggestion")
+        @Html.ActionLink("Create Suggestion", "Create", "Suggestion")
     </p>
     <table class="table">
         <tr>
@@ -66,11 +66,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
+                @*<td>
+                    @Html.ActionLink("Edit Suggestion", "Edit", "Suggestion") |
+                    @Html.ActionLink("Suggestion Details", "Details", "Suggestion") |
+                    @Html.ActionLink("Delete Suggestion", "Delete", "Suggestion")
+                </td>*@
                 }
             </tr>
         }
