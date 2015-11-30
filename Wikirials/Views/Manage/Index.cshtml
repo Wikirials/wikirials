@@ -6,26 +6,26 @@
 <h2>@ViewBag.Title:</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
-<div>
+<div class="form-horizontal well">
     <h4 class="slightmovement">My account settings</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
-            <dd>
-                @Html.ActionLink("Change Password", "Manage", "Account")
-            </dd>
+        <dd>
+            @Html.ActionLink("Change Password", "Manage", "Account")
+        </dd>
         @*<dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>*@
+                [
+                @if (Model.HasPassword)
+                {
+                    @Html.ActionLink("Change your password", "ChangePassword")
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+                ]
+            </dd>*@
         <dt>External Logins:</dt>
         <dd>
             @Model.Logins.Count [
@@ -33,13 +33,13 @@
         </dd>
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-             
+
              See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
                 for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-             
+
              Uncomment the following block after you have set up two-factor authentication
         *@
-        @*  
+        @*
             <dt>Phone Number:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None") [
@@ -82,6 +82,10 @@
                         </text>
                     }
                 }*@
+        </dd>
+        <dt class="slightmove">Add Phone Number:</dt>
+        <dd class="slightmove">
+            @Html.ActionLink("Add a phone number", "AddPhoneNumber", "Manage")
         </dd>
     </dl>
 </div>

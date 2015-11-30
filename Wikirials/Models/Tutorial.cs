@@ -15,7 +15,6 @@ namespace Wikirials.Models
         public string Body { get; set; }
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        public Boolean Classification { get; set; }
         public string Type { get; set; }
         public string ContentType { get; set; }
 

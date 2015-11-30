@@ -199,6 +199,7 @@
     <Compile Include="Models\Tutorial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\GroupView.cs" />
     <Compile Include="ViewModels\TutorialComment.cs" />
   </ItemGroup>
   <ItemGroup>
