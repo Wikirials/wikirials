@@ -170,8 +170,18 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Body,Date,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
+        //public ActionResult Edit([Bind(Include = "ID,Title,Body,Date,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
+        public ActionResult Edit(Tutorial model, HttpPostedFileBase upload, int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tutorial tutorial = db.Tutorials.Find(id);
+            if (tutorial == null)
+            {
+                return HttpNotFound();
+            }
 
             if (ModelState.IsValid)
             {
@@ -197,6 +207,10 @@ namespace Wikirials.Controllers
                     tutorial.FileMains = new List<FileMain> { pic };
                 }
 
+                tutorial.Title = model.Title;
+                tutorial.Body = model.Body;
+                tutorial.Type = model.Type;
+                tutorial.ContentType = model.ContentType;
                 tutorial.Date = DateTime.Now;
                 
                 db.Entry(tutorial).State = EntityState.Modified;
