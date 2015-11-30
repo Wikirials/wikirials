@@ -11,19 +11,19 @@
     @*<h4>Category</h4>*@
     <hr />
 
-    <div class="well">
-    <dl class="dl-horizontal">
-        <dt>
-            @*@Html.DisplayNameFor(model => model.Description)*@
-            Name
-        </dt>
+    <div class="well well-sm">
+        <dl class="dl-horizontal">
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Description)*@
+                Name
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-    </dl>
-        </div>
+        </dl>
+    </div>
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
