@@ -9,6 +9,6 @@ namespace Wikirials.Models
     {
         Avatar = 1, Photo,
         Pic = 2, Picture,
-        Pdf = 3, File
+        Pdf = 3, PFile
     }
 }
