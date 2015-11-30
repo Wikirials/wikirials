@@ -63,6 +63,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: Group/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -73,6 +74,7 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ID,Name,Password")] Group group)
         {
             if (ModelState.IsValid)
@@ -90,6 +92,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: Group/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -109,6 +112,7 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ID,Name,Password")] Group group)
         {
             if (ModelState.IsValid)
@@ -121,6 +125,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: Group/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -138,6 +143,7 @@ namespace Wikirials.Controllers
         // POST: Group/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Group group = db.Groups.Find(id);

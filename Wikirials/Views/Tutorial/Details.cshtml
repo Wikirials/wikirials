@@ -50,14 +50,14 @@
                     <input type="submit" value="Comment" class="btn btn-success" />
                 </div>
             }
-            
+
             @foreach (var item in Model.Comments)
             {
                 if (item.Tutorial == Model.Tutorial)
                 {
                     <div class="row">
                         <div class="col-sm-1">
-                            @if (item.User !=null && item.User.Files != null)
+                            @if (item.User != null && item.User.Files != null)
                             {
                                 if (item.User.Files.Any(f => f.FileType == FileType.Avatar))
                                 {
@@ -73,17 +73,20 @@
                                 }
                             }
                         </div><!-- /col-sm-1 -->
-
-                        <div class="col-sm-5">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <strong>@Html.DisplayFor(modelItem => item.User.Name)</strong> <span class="text-muted">@Html.DisplayFor(modelItem =>item.DateTime)</span>
-                                </div>
-                                <div class="panel-body">
-                                    @Html.DisplayFor(modelItem => item.Text)
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="col-sm-5">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <strong>@Html.DisplayFor(modelItem => item.User.Name)</strong> <span class="text-muted">@Html.DisplayFor(modelItem => item.DateTime)</span>
+                                    </div>
+                                    <div class="panel-body">
+                                        @Html.DisplayFor(modelItem => item.Text)
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+
                     </div>
                 }
             }

@@ -42,6 +42,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: Suggestion/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -52,6 +53,7 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,Title,Body,Date")] Suggestion suggestion)
         {
             if (ModelState.IsValid)
@@ -76,6 +78,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: Suggestion/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +98,7 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "ID,Title,Body,Date")] Suggestion suggestion)
         {
             if (ModelState.IsValid)
@@ -109,6 +113,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: Suggestion/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -126,6 +131,7 @@ namespace Wikirials.Controllers
         // POST: Suggestion/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Suggestion suggestion = db.Suggestions.Find(id);

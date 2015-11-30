@@ -106,6 +106,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: /Tutorial/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -116,6 +117,7 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "ID,Title,Body,Date,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
         {
             string userid = User.Identity.GetUserId();
@@ -151,6 +153,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: /Tutorial/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -170,6 +173,7 @@ namespace Wikirials.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         //public ActionResult Edit([Bind(Include = "ID,Title,Body,Date,Type,ContentType")] Tutorial tutorial, HttpPostedFileBase upload)
         public ActionResult Edit(Tutorial model, HttpPostedFileBase upload, int? id)
         {
@@ -221,6 +225,7 @@ namespace Wikirials.Controllers
         }
 
         // GET: /Tutorial/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -238,6 +243,7 @@ namespace Wikirials.Controllers
         // POST: /Tutorial/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Tutorial tutorial = db.Tutorials.Find(id);
