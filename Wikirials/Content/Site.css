@@ -556,30 +556,9 @@ img.displayed {
 }
 
 .textareacomment {
-    resize: vertical;
+    resize:vertical;
 }
 
-.spanprofile {
-    display: inline-flex;
-}
-
-.profilebuttons {
-    margin-right: 5px;
-}
-
-.col-md-3.create {
-    padding-right: -300px;
-    padding-left: -300px;
-}
-
-.editfile {
-    margin-left: 180px;
-}
-
-.btn.btn-success.role {
-    margin-top: 15px;
-}
-
-.slightmove {
-    margin-top: -10px;
+.tut {
+margin: 10px 30px 60px;
 }
