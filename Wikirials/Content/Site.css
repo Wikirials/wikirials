@@ -558,3 +558,7 @@ img.displayed {
 .textareacomment {
     resize:vertical;
 }
+
+.tut {
+margin: 10px 30px 60px;
+}
