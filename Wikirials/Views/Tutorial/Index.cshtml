@@ -58,7 +58,7 @@
                         }
 
                         <p><a href="@Url.Action("Details", "Tutorial", new { id = item.ID })" class="btn btn-info btn-sm">Read More</a></p>
-                        <p>@Html.ActionLink("Download pdf", "ShowPdf", "SomeController", null, new { target = "_blank" })</p>
+                        <p>@Html.ActionLink("Download pdf", "ShowPdf", "FileMain", null, new { target = "_blank" })</p>
                         <br />
                         <ul class="list-inline">
                             <li><i class="glyphicon glyphicon-user"></i> by <a href="">@Html.DisplayFor(modelItem => item.User.Name)</a> | </li>
