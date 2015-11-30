@@ -13,7 +13,7 @@ namespace Wikirials.Models
         public string Title { get; set; }
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
         public string Type { get; set; }
         public string ContentType { get; set; }

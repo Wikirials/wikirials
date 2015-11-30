@@ -11,6 +11,7 @@ namespace Wikirials.ViewModels
         public Group Group;
         public Suggestion Suggestion;
         public IEnumerable<Suggestion> Suggestions;
-        public IEnumerable<Tutorial> Tutorials;
+        //public Tutorial Tutorial;
+        //public IEnumerable<Tutorial> Tutorials;
     }
 }

@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using Wikirials.DAL;
 using Wikirials.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Wikirials.ViewModels;
 
 namespace Wikirials.Controllers
 {
@@ -51,9 +54,20 @@ namespace Wikirials.Controllers
         {
             if (ModelState.IsValid)
             {
+                GroupView groupview = new GroupView();
+                string userid = User.Identity.GetUserId();
+                var currentuser = db.Users.SingleOrDefault(u => u.Id == userid);
+                int group = (int)Session["id"];
+                var currentgroup = db.Groups.FirstOrDefault(s => s.ID == group);
+
+                suggestion.User = currentuser;
+                suggestion.Group = currentgroup;
+
+                suggestion.Date = DateTime.Now;
+
                 db.Suggestions.Add(suggestion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Group");
             }
 
             return View(suggestion);

@@ -36,28 +36,28 @@ namespace Wikirials.Controllers
             return View(comment);
         }
 
-        // GET: Comment/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Comment/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: Comment/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Text,DateTime")] Comment comment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Comments.Add(comment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// POST: Comment/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "ID,Text,DateTime")] Comment comment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Comments.Add(comment);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(comment);
-        }
+        //    return View(comment);
+        //}
 
         // GET: Comment/Edit/5
         public ActionResult Edit(int? id)

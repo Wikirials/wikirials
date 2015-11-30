@@ -12,65 +12,61 @@
 <div class="container">
     <h2 class="marginspecial">@ViewBag.Title:</h2>
     <div class="marginclass">
-    <div class="well">
+        <div class="well">
             @using (Html.BeginForm("Index", "Tutorial", FormMethod.Get))
-        {
-            <p>
+            {
+                <p>
                     <b>Tutorial Title:</b> @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                <input type="submit" value="Search" />
-            </p>
-        }
+                    <input type="submit" value="Search" />
+                </p>
+            }
             <hr>
-        @foreach (var item in Model)
-        {
-            <div class="row">
-                @if (item.FileMains != null)
-                {
-                    if (item.FileMains.Any(f => f.FileType == FileType.Pic))
+            @foreach (var item in Model)
+            {
+                <div class="row">
+                    @if (item.FileMains != null)
                     {
-                        <div class="col-md-3">    
-                            <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180"/>
-                        </div>
+                        if (item.FileMains.Any(f => f.FileType == FileType.Pic))
+                        {
+                            <div class="col-md-3">
+                                <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180" />
+                            </div>
                         }
-                     else if (item.FileMains.Any(f => f.FileType == FileType.Pdf))
-                    {
-                        <a href="@Url.Action("RetreiveFile", "File", new { id = @item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId})" target="_blank">OpenPdf </a>
-                        @*<embed src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" width="500" height="375" type='application/pdf'>*@
-                        @*<iframe src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" type="ap" style="width:718px; height:700px;" frameborder="0">PDF File</iframe>*@
+                        else if (item.FileMains.Any(f => f.FileType == FileType.Pdf))
+                        {
+                            <a href="@Url.Action("RetreiveFile", "File", new { id = @item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId})" target="_blank">OpenPdf </a>
+                            @*<embed src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" width="500" height="375" type='application/pdf'>*@
+                            @*<iframe src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pdf).FileMainId" type="ap" style="width:718px; height:700px;" frameborder="0">PDF File</iframe>*@
+                        }
+                        else
+                        {
+                            <div class="col-md-3">
+                                <img src="http://placehold.it/260x180" alt="">
+                            </div>
+                        }
                     }
-                    else
-                    {
-                        <div class="col-md-3">
-                            <img src="http://placehold.it/260x180" alt="">
-                        </div>
-                    }
-                }
-                <div class="col-md-9">
+                    <div class="col-md-9">
                         <h4>@Html.DisplayFor(modelItem => item.Title, new { currentFilter = ViewBag.CurrentFilter })</h4>
-                    <p>
-                        @Html.DisplayFor(modelItem => item.Body)
-                    </p>
-                    <p><a href="@Url.Action("Details", "Tutorial", new { id = item.ID })" class="btn btn-info btn-sm">Read More</a></p>
-                    <br />
-                    <ul class="list-inline">
-                        <li><i class="glyphicon glyphicon-user"></i> by <a href="">@Html.DisplayFor(modelItem => item.User.Name)</a> | </li>
-                        <li><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(modelItem => item.Date) | </li>
-                        <li><i class="glyphicon glyphicon-pencil"></i> @Html.ActionLink("Edit", "Edit", new { id = item.ID }) | </li>
-                        <li><i class="glyphicon glyphicon-remove"></i> @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </li>
-                    </ul>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Body)
+                        </p>
+                        <p><a href="@Url.Action("Details", "Tutorial", new { id = item.ID })" class="btn btn-info btn-sm">Read More</a></p>
+                        <br />
+                        <ul class="list-inline">
+                            <li><i class="glyphicon glyphicon-user"></i> by <a href="">@Html.DisplayFor(modelItem => item.User.Name)</a> | </li>
+                            <li><i class="glyphicon glyphicon-calendar"></i> @Html.DisplayFor(modelItem => item.Date) | </li>
+                            <li><i class="glyphicon glyphicon-pencil"></i> @Html.ActionLink("Edit", "Edit", new { id = item.ID }) | </li>
+                            <li><i class="glyphicon glyphicon-remove"></i> @Html.ActionLink("Delete", "Delete", new { id = item.ID }) </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <hr>
-        }
+                <hr>
+            }
 
+        </div>
     </div>
 </div>
-</div>
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+w
 
 
 
@@ -86,60 +82,60 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 
 @*<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Classification)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContentType)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Body)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Classification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContentType)
-            </td>
-
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContentType)
+            </th>
+            <th></th>
         </tr>
-    }
 
-    </table>*@
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classification)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContentType)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+        </table>*@

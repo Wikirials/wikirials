@@ -66,7 +66,7 @@ namespace Wikirials.Controllers
 
             tutorialcomment.Tutorial = tutorial;
 
-            if (tutorialcomment == null)
+            if (tutorialcomment.Tutorial == null)
             {
                 return HttpNotFound();
             }
@@ -74,7 +74,7 @@ namespace Wikirials.Controllers
             return View(tutorialcomment);
         }
 
-        // POST: Comment/Create
+        // POST: Tutorial/Details
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -140,7 +140,7 @@ namespace Wikirials.Controllers
                 }
 
                 tutorial.User = currentuser;
-                //tutorial.Date = DateTime.Now;
+                tutorial.Date = DateTime.Now;
 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();

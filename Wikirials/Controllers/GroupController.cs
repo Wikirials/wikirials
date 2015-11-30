@@ -6,8 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Wikirials.DAL;
 using Wikirials.Models;
+using Wikirials.DAL;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Wikirials.ViewModels;
 
 namespace Wikirials.Controllers
 {
@@ -24,16 +27,39 @@ namespace Wikirials.Controllers
         // GET: Group/Details/5
         public ActionResult Details(int? id)
         {
+            GroupView groupview = new GroupView();
+            //var groupview = new GroupView();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Group group = db.Groups.Find(id);
-            if (group == null)
+
+            groupview.Group = group;
+
+            if (groupview.Group == null)
             {
                 return HttpNotFound();
             }
-            return View(group);
+
+            groupview.Suggestions = db.Suggestions.ToList();
+            //groupview.Tutorials = db.Tutorials.ToList();
+
+            //if (id != null)
+            //{
+            //    ViewBag.ID = id.Value;
+            //    groupview.SubCategories = viewModel.Categories.FirstOrDefault(c => c.ID == id).SubCategory;
+            //}
+
+            //if (subcatID != null)
+            //{
+            //    ViewBag.SubCategoryID = subcatID.Value;
+            //    viewModel.Posts = db.Posts.Include(p => p.FilesPost).Where(x => x.SubCategoryID == subcatID);
+            //}
+            Session["id"] = id;
+
+            return View(groupview);
         }
 
         // GET: Group/Create
@@ -51,6 +77,10 @@ namespace Wikirials.Controllers
         {
             if (ModelState.IsValid)
             {
+                string userid = User.Identity.GetUserId();
+                var currentuser = db.Users.SingleOrDefault(u => u.Id == userid);
+
+                group.User = currentuser;
                 db.Groups.Add(group);
                 db.SaveChanges();
                 return RedirectToAction("Index");
