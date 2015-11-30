@@ -12,7 +12,7 @@
 
 
 
-            <h1>@Html.DisplayFor(model => model.Tutorial.Title)<span class="pull-right "><a href="@Url.Action("Edit", "Tutorial", new { id = Model.Tutorial.ID })" class="btn btn-warning">Edit</a></span></h1>
+            <h1>@Html.DisplayFor(model => model.Tutorial.Title)@if (User.IsInRole("Admin")){<span class="pull-right "><a href="@Url.Action("Edit", "Tutorial", new { id = Model.Tutorial.ID })" class="btn btn-warning">Edit</a></span>}</h1>
             <div class="grow pic">
                 @if (Model.Tutorial.FileMains.Any(f => f.FileType == FileType.Pic))
                 {
