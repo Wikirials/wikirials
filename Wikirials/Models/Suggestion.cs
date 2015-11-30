@@ -10,7 +10,9 @@ namespace Wikirials.Models
     public class Suggestion
     {
         public int ID { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
         [DataType(DataType.DateTime)]

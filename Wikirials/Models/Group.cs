@@ -10,6 +10,7 @@ namespace Wikirials.Models
     public class Group
     {
         public int ID { get; set; }
+        [Required]
         public string Name { get; set; }
         //public string Password { get; set; }
 

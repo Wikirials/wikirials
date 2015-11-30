@@ -10,12 +10,18 @@ namespace Wikirials.Models
     public class Tutorial
     {
         public int ID { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         [DataType(DataType.MultilineText)]
         public string Body { get; set; }
+        [Required]
         [DataType(DataType.DateTime)]
         public DateTime Date { get; set; }
+        [Required]
         public string Type { get; set; }
+        [Required]
+        [Display(Name = "Content Type")]
         public string ContentType { get; set; }
 
 

@@ -10,6 +10,7 @@ namespace Wikirials.Models
     public class Comment
     {
         public int ID { get; set; }
+        [Required]
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }
         [DataType(DataType.DateTime)]

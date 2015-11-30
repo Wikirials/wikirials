@@ -10,6 +10,7 @@ namespace Wikirials.Models
     public class Message
     {
         public int ID { get; set; }
+        [Required]
         public string Text { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime DateTime { get; set; }
