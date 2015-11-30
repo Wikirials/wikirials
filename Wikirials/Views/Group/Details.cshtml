@@ -5,6 +5,9 @@
 }
 
 <h2>@Html.DisplayFor(model => model.Group.Name)</h2>
+<p>
+    @Html.ActionLink("Create Suggestion", "Create", "Suggestion")
+</p>
 
 @*<div>
     <hr />
@@ -27,18 +30,16 @@
 
     </dl>
 </div>*@
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Group.ID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
 
-<hr />
+
 
 <div class="suggestion">
-    <p>
-        @Html.ActionLink("Create New", "Create", "Suggestion")
-    </p>
-    <table class="table">
+   <div class="well">
+    @*<table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Suggestion.Title)
@@ -50,11 +51,32 @@
                 @Html.DisplayNameFor(model => model.Suggestion.Date)
             </th>
             <th></th>
-        </tr>
+        </tr>*@
 
         @foreach (var item in Model.Suggestions)
         {
-            <tr>
+             if (item.Group.ID == Model.Group.ID)
+             { 
+                 
+                 <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+    <p>   @Html.DisplayFor(modelItem => item.Body)</p>
+    <div>
+        <span class="badge badge-success">Posted: @Html.DisplayFor(modelItem => item.Date)</span>
+    </div>     
+    <hr>
+             
+             
+             }
+             }
+            
+            
+            
+            
+            
+            
+            
+            
+            @*<tr>
                 @if (item.Group.ID == Model.Group.ID) 
                 {
                 <td>
@@ -65,17 +87,16 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-                }
-            </tr>
-        }
-
-    </table>
+                </td>*@
+                @*<td>
+                    @Html.ActionLink("Edit Suggestion", "Edit", "Suggestion") |
+                    @Html.ActionLink("Suggestion Details", "Details", "Suggestion") |
+                    @Html.ActionLink("Delete Suggestion", "Delete", "Suggestion")
+                </td>*@
+                @*}
+            </tr>*@
+      
+    </div>
 
 </div>
 

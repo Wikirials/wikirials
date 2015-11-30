@@ -555,11 +555,7 @@ img.displayed {
 }
 
 .textareacomment {
-    resize:vertical;
-}
-
-.tut {
-margin: 10px 30px 60px;
+    resize: vertical;
 }
 
 .spanprofile {
@@ -585,4 +581,8 @@ margin: 10px 30px 60px;
 
 .slightmove {
     margin-top: -10px;
+}
+
+.tut {
+margin: 10px 30px 60px;
 }
