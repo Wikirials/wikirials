@@ -13,6 +13,6 @@ namespace Wikirials.Models
         public string Description { get; set; }
 
 
-        public virtual Tutorial Tutorials { get; set; }
+        public virtual ICollection<Tutorial> Tutorials { get; set; }
     }
 }

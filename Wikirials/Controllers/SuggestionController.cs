@@ -97,6 +97,8 @@ namespace Wikirials.Controllers
         {
             if (ModelState.IsValid)
             {
+                suggestion.Date = DateTime.Now;
+
                 db.Entry(suggestion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
