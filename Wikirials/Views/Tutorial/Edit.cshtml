@@ -44,7 +44,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type)
+                <select name="type">
+                    <option value="ficheiro">Ficheiro</option>
+                    <option value="foto">Foto</option>
+                    <option value="video">Video</option>
+                </select>
                 @Html.ValidationMessageFor(model => model.Type)
             </div>
         </div>

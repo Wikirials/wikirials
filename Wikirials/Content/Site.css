@@ -556,7 +556,11 @@ img.displayed {
 }
 
 .textareacomment {
-    resize: vertical;
+    resize:vertical;
+}
+
+.tut {
+margin: 10px 30px 60px;
 }
 
 .spanprofile {
@@ -574,4 +578,12 @@ img.displayed {
 
 .editfile {
     margin-left: 180px;
+}
+
+.btn.btn-success.role {
+    margin-top: 15px;
+}
+
+.slightmove {
+    margin-top: -10px;
 }
