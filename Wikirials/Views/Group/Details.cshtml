@@ -1,34 +1,136 @@
-﻿@model Wikirials.Models.Group
+﻿@model Wikirials.ViewModels.GroupView
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Groups";
 }
 
-<h2>@Html.DisplayFor(model => model.Name) details</h2>
+<h2>@Html.DisplayFor(model => model.Group.Name)</h2>
 
-<div>
-    @*<h4>Group</h4>*@
+@*<div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Group.Name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Group.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Group.Password)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => model.Group.Password)
         </dd>
 
     </dl>
-</div>
+</div>*@
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Group.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+<hr />
+
+<div class="suggestion">
+    <p>
+        @Html.ActionLink("Create New", "Create", "Suggestion")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Suggestion.Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Suggestions)
+        {
+            <tr>
+                @if (item.Group.ID == Model.Group.ID) 
+                {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+                }
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+@*<hr />*@
+
+@*<div class="suggestion">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Add Tutorial", "Select", "Tutorial")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutorial.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutorial.Body)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutorial.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutorial.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tutorial.ContentType)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Tutorials)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContentType)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>*@

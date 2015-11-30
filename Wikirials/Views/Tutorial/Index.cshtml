@@ -29,7 +29,7 @@
                     if (item.FileMains.Any(f => f.FileType == FileType.Pic))
                     {
                         <div class="col-md-3">    
-                            <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180"/>
+                            <img src="~/FileMain?id=@item.FileMains.First(f => f.FileType == FileType.Pic).FileMainId" alt="pic" width="260" height="180" />
                         </div>
                         }
                      else if (item.FileMains.Any(f => f.FileType == FileType.Pdf))

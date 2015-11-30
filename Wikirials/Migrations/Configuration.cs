@@ -1,9 +1,12 @@
 namespace Wikirials.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Wikirials.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Wikirials.DAL.ApplicationDbContext>
     {
@@ -27,6 +30,27 @@ namespace Wikirials.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+            if (!roleManager.RoleExists("Admin"))
+            {
+                roleManager.Create(new IdentityRole("Admin"));
+            }
+
+
+            var user = new ApplicationUser { UserName = "admin@wikirials.com", DateofBirth = DateTime.Now, Name = "Admin", Email = "admin@wikirials.com", Gender = "Male" };
+
+            if (userManager.FindByName("admin@wikirials.com") == null)
+            {
+                var result = userManager.Create(user, "password");
+
+                if (result.Succeeded)
+                {
+                    userManager.AddToRole(user.Id, "Admin");
+                }
+            }
         }
     }
 }
