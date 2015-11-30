@@ -1,16 +1,16 @@
 ﻿@model Wikirials.Models.Group
 
-@{
+@*@{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete @Html.DisplayFor(model => model.Name)</h2>
+<h2>Delete @Html.DisplayFor(model => model.Name)</h2>*@
 
-<h3>Are you sure you want to delete the @Html.DisplayFor(model => model.Name) group?</h3>
+<h2>Are you sure you want to delete the @Html.DisplayFor(model => model.Name) group?</h2>
 <div>
     @*<h4>Group</h4>*@
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal well">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -32,11 +32,18 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color group">
-            <input type="submit" value="Delete" class="btn btn-default group" /> |
-            <div class="category delete">
-                @Html.ActionLink("Back to List", "Index")
-            </div>
+         <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <input type="submit" value="Delete" class="btn btn-danger" />
         </div>
+    </div>
+            @*<div class="category delete">
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
+        <div class="col-md-offset-2 col-md-2" style="margin-left:0px;">
+            <a href="/Group/Index" class="btn btn-warning">Cancel</a>
+        </div>
+        
+        
     }
 </div>
